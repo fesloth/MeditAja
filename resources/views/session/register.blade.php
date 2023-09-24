@@ -48,7 +48,7 @@
                     Register
                 </button>
                 <p class="mt-4 text-sm text-gray-600">
-                    Sudah punya akun? <a href="{{ route('session.login') }}" class="text-purple-600 hover:underline">Login di sini</a>.
+                    Sudah punya akun? <a href="{{ route('session.login') }}" class="text-purple-600 hover:underline">Login</a>.
                 </p>
             </div>
         </form>

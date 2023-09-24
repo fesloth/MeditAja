@@ -35,7 +35,7 @@
                 </label>
                 <button
                     type="submit"
-                    class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-purple-400 focus:border-purple-500"
+                    class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-purple-400 focus:border-purple-500"
                 >
                     Login
                 </button>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/', [MainController::class, 'index']);
+Route::get('/premium', [MainController::class, 'premium']);
+
+Route::get('/progress', [UsersController::class, 'index']);
+
 Route::get('/login', [SessionController::class, 'login'])->name('session.login');
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');
