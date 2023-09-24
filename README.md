@@ -66,7 +66,7 @@ Tingkatkan kesejahteraan dan konsentrasi Anda melalui meditasi yang dipandu.
 - Desain Responsif:
 Website kami dirancang dengan menggunakan Tailwind CSS & DaisyUI untuk memberikan pengalaman pengguna yang baik di berbagai perangkat.
 
-# Teknologi yang Digunakan
+### Frontend & Backend
 <table>
   <tr>
     <td align="center">
