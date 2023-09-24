@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/', [MainController::class, 'index']);
+Route::get('/login', [SessionController::class, 'login'])->name('session.login');
+Route::get('/register', [SessionController::class, 'register'])->name('session.register');
