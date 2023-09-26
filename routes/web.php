@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsersController;
@@ -23,7 +24,12 @@ Route::get('/', function () {
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/premium', [MainController::class, 'premium']);
-Route::get('/chat', [MainController::class, 'bot']);
+Route::get('/music', [MainController::class, 'music']);
+
+Route::get('/todo', [ContentController::class, 'todo']);
+Route::get('/timer', [ContentController::class, 'timer']);
+Route::get('/video', [ContentController::class, 'video']);
+Route::get('/mood', [ContentController::class, 'mood']);
 
 Route::get('/progress', [UsersController::class, 'index']);
 Route::get('/profile', [UsersController::class, 'profile']);

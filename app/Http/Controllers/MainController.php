@@ -20,10 +20,10 @@ class MainController extends Controller
         ]);
     }
 
-    public function bot()
+    public function music()
     {
-        return view('dashboard.chatbot', [
-            "title" => "Chatbot"
+        return view('dashboard.music', [
+            "title" => "Playlist"
         ]);
     }
 }

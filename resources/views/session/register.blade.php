@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 <div class="flex justify-center items-center h-screen">
-    <div class="max-w-lg w-96 bg-white border border-slate-200 rounded-xl font-rubik p-5 shadow-md dark:bg-slate-300">
+    <div class="max-w-lg w-96 bg-[#FFA500] border border-slate-200 rounded-xl font-rubik p-5 shadow-md">
         <form action="#" method="post">
             <div class="p-5">
-                <h3 class="text-center text-2xl font-semibold mb-6 text-purple-600">Register</h3>
+                <h3 class="text-center text-2xl font-semibold mb-6 text-orange-800">Register</h3>
                 <label for="username" class="block mb-4">
-                    <span class="block font-semibold text-slate-800">Username</span>
+                    <span class="block font-semibold text-slate-600">Username :</span>
                     <input
                         type="text"
                         id="username"
@@ -15,7 +15,7 @@
                     />
                 </label>
                 <label for="email" class="block mb-4">
-                    <span class="block font-semibold text-slate-800">Email</span>
+                    <span class="block font-semibold text-slate-600">Email :</span>
                     <input
                         type="email"
                         id="email"
@@ -24,7 +24,7 @@
                     />
                 </label>
                 <label for="password" class="block mb-4">
-                    <span class="block font-semibold text-slate-800">Password</span>
+                    <span class="block font-semibold text-slate-600">Password :</span>
                     <input
                         type="password"
                         id="password"
@@ -33,7 +33,7 @@
                     />
                 </label>
                 <label for="password_confirmation" class="block mb-6">
-                    <span class="block font-semibold text-slate-800">Konfirmasi Password</span>
+                    <span class="block font-semibold text-slate-600">Konfirmasi Password :</span>
                     <input
                         type="password"
                         id="password_confirmation"
@@ -43,7 +43,7 @@
                 </label>
                 <button
                     type="submit"
-                    class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-purple-400 focus:border-purple-500"
+                    class="bg-orange-700 hover:bg-yellow-700 text-white px-4 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-purple-400 focus:border-purple-500"
                 >
                     Register
                 </button>

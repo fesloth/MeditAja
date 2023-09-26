@@ -6,7 +6,7 @@
             <div class="p-5">
                 <h3 class="text-center text-2xl font-semibold mb-6 text-orange-800">Login</h3>
                 <label for="username" class="block mb-4">
-                    <span class="block font-semibold text-white">Username</span>
+                    <span class="block font-semibold text-slate-600">Username :</span>
                     <input
                         type="text"
                         id="username"
@@ -15,7 +15,7 @@
                     />
                 </label>
                 <label for="password" class="block mb-4">
-                    <span class="block font-semibold text-white">Password</span>
+                    <span class="block font-semibold text-slate-600">Password :</span>
                     <input
                         type="password"
                         id="password"
@@ -23,8 +23,8 @@
                         class="px-4 py-2 border rounded w-full bg-gray-100 text-sm placeholder-slate-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:border-yellow-500"
                     />
                 </label>
-                <label for="email" class="block mb-4">
-                    <span class="block font-semibold text-white">Email</span>
+                <label for="email" class="block">
+                    <span class="block font-semibold text-slate-600">Email :</span>
                     <input
                         type="email"
                         id="email"
@@ -39,7 +39,7 @@
                 >
                     Login
                 </button>
-                <p class="mt-4 text-sm text-white">
+                <p class="mt-4 text-sm text-gray-600">
                     Belum punya akun? <a href="{{ route('session.register') }}" class="text-orange-800 hover:underline">Register</a>.
                 </p>
             </div>

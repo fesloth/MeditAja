@@ -6,7 +6,7 @@
   <div class="flex-none">
     <div class="dropdown pr-5">
       <div class="flex items-stretch">
-          <a href="/chat" class="btn btn-ghost rounded-btn"><i class="fa-brands fa-rocketchat"></i></a>
+          <a href="/music" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-music"></i></i></a>
       <div class="flex items-stretch">
           <a href="/progress" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-leaf"></i></a>
     </div>
