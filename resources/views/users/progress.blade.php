@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" class="bg-white scroll-smooth">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>{{ $title }}</title>
-  @vite('resources/css/app.css')
-</head>
-<body>
+@extends('layouts.main')
   <div class="container">
-    <div class="navbar bg-base-100 shadow-xl">
+    <div class="navbar bg-orange-700 text-white shadow-xl">
       <div class="flex-1 pl-5">
         <a class="btn btn-ghost normal-case text-xl">User Point <i class="fa-solid fa-star"></i></a>
       </div>
@@ -22,7 +13,7 @@
       </div>
     </div>
   </div>
-  <h1 class="text-4xl m-10 font-semibold text-slate-800 mt-44 text-center">Progress Anda Hari Ini</h1>
+  <h1 class="text-4xl m-10 font-semibold text-yellow-600 mt-44 text-center">Progress Anda Hari Ini</h1>
   <div class="container flex justify-center items-center">
     <div class="stats shadow text-center">
       <div class="stat">
@@ -57,5 +48,3 @@
       </div>
     </div>
   </div>
-</body>
-</html>

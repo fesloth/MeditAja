@@ -19,4 +19,11 @@ class MainController extends Controller
             "title" => "Premium"
         ]);
     }
+
+    public function bot()
+    {
+        return view('dashboard.chatbot', [
+            "title" => "Chatbot"
+        ]);
+    }
 }
