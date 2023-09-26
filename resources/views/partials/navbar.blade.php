@@ -20,7 +20,7 @@
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-400 rounded-box w-52">
         <li>
-          <a class="justify-between">
+          <a href="/profile" class="justify-between">
             Profile Setting
             <span class="badge bg-orange-500 border-none text-white">Edit?</span>
           </a>

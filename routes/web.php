@@ -26,6 +26,7 @@ Route::get('/premium', [MainController::class, 'premium']);
 Route::get('/chat', [MainController::class, 'bot']);
 
 Route::get('/progress', [UsersController::class, 'index']);
+Route::get('/profile', [UsersController::class, 'profile']);
 
 Route::get('/login', [SessionController::class, 'login'])->name('session.login');
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');

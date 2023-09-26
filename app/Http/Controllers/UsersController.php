@@ -14,4 +14,11 @@ class UsersController extends Controller
             "title" => "Progress"
         ]);
     }
+
+    public function profile()
+    {
+        return view('users.profile', [
+            "title" => "Profile Setting"
+        ]);
+    }
 }

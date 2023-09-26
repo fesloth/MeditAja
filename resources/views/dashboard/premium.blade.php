@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="cards-container flex mt-36 mx-32 my-36">
-    <div class="card w-96 bg-[#ff8906] text-white mx-4 shadow-xl">
+    <div class="card w-96 bg-[#ff8906] text-white mx-4 shadow-xl">  
       <div class="card-body items-center text-center m-10">
         <h2 class="card-title">Beli Paket Tahunan!</h2>
         <p>Rp. 300.000,00-</p>
