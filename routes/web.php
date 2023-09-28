@@ -33,6 +33,7 @@ Route::get('/mood', [ContentController::class, 'mood']);
 
 Route::get('/progress', [UsersController::class, 'index']);
 Route::get('/profile', [UsersController::class, 'profile']);
+Route::get('/edit', [UsersController::class, 'edit']);
 
 Route::get('/login', [SessionController::class, 'login'])->name('session.login');
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');

@@ -21,4 +21,11 @@ class UsersController extends Controller
             "title" => "Profile Setting"
         ]);
     }
+
+    public function edit()
+    {
+        return view('users.action.edit', [
+            "title" => "Edit Profile"
+        ]);
+    }
 }

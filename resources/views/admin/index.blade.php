@@ -52,7 +52,7 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Aksi
-                    <span class="sr-only">Edit</span>
+                    <span class="sr-only">Block</span>
                 </th>
             </tr>
         </thead>
@@ -65,7 +65,7 @@
                   Apple MacBook Pro 17"
               </th>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Block</a>
                 </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -76,7 +76,7 @@
                   Microsoft Surface Pro
               </th>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Block</a>
                 </td>
             </tr>
             <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -87,7 +87,7 @@
                   Magic Mouse 2
               </th>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Block</a>
                 </td>
             </tr>
         </tbody>
