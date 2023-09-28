@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
     use HasFactory;
-    protected $table = "pam";
-    protected $guarded = ['id'];
+    protected $table = "todo";
+    protected $guarded = [];
+    protected $fillable = ['priority', 'description', 'deadline', 'status'];
 }

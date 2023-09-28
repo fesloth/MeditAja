@@ -2,17 +2,96 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    // views
-
+    // views 
     public function todo()
     {
+        $task = Todo::get();
+
         return view('meditation.todolist', [
-            "title" => "Todolist"
+            'title' => 'TodoList', 'task' => $task
         ]);
+    }
+
+    public function createTodo()
+    {
+        return view('meditation.action.create', ['title' => 'Create Task']);
+    }
+
+    public function storeTodo(Request $request)
+    {
+        // Validasi data yang dikirimkan dari formulir jika diperlukan
+
+        $task = new Todo();
+        $task->description = $request->description;
+        $task->deadline = $request->deadline;
+        $task->priority = $request->priority;
+        $task->status = $request->status ?? 'On progress';
+
+        $task->save();
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect('/todo')->with('success', 'Task produk berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $task = Todo::find($id);
+
+        return view('meditation.action.edit', [
+            'title' => 'Edit Task', 'task' => $task
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        // Temukan task yang akan diperbarui berdasarkan ID
+        $task = Todo::find($id);
+
+        // Perbarui data task
+        $task->description = $request->description;
+        $task->deadline = $request->deadline;
+        $task->priority = $request->priority;
+
+        $task->status = $request->status ?? 'On progress';
+
+        $task->save();
+
+        return redirect('/todo')->with('success', 'Data task berhasil diperbarui.');
+    }
+
+    public function status($id)
+    {
+        // Temukan tugas berdasarkan ID
+        $task = Todo::find($id);
+
+        if (!$task) {
+            return redirect('/todo')->with('error', 'Tugas tidak ditemukan.');
+        }
+
+        // Toggle status dari "On progress" ke "Done" atau sebaliknya
+        $task->status = $task->status == 'On progress' ? 'Done' : 'On progress';
+        $task->save();
+
+        return redirect('/todo')->with('success', 'Status tugas berhasil diubah.');
+    }
+
+    public function delete($id)
+    {
+        $task = Todo::find($id);
+
+        if (!$task) {
+            return redirect('/todo')->with('error', 'Data produk tidak ditemukan.');
+        }
+        // Hapus data produk
+        $task->delete();
+
+        return redirect('/todo')->with('success', 'Data produk berhasil dihapus.');
     }
 
     public function music()

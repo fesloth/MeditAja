@@ -27,6 +27,13 @@ Route::get('/premium', [MainController::class, 'premium']);
 Route::get('/music', [MainController::class, 'music']);
 
 Route::get('/todo', [ContentController::class, 'todo']);
+Route::get('/createTodo', [ContentController::class, 'createTodo']);
+Route::post('/storeTodo', [ContentController::class, 'storeTodo']);
+Route::post('status/{id}', [ContentController::class, 'status']);
+Route::get('/editTodo/{id}', [ContentController::class, 'edit']);
+Route::put('/editTodo/update/{id}', [ContentController::class, 'update']);
+Route::get('delete/{id}', [ContentController::class, 'delete']);
+
 Route::get('/timer', [ContentController::class, 'timer']);
 Route::get('/video', [ContentController::class, 'video']);
 Route::get('/mood', [ContentController::class, 'mood']);

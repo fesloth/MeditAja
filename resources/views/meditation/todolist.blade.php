@@ -27,45 +27,54 @@
             Timer
           </a>
         </div>
-          <table class="w-full table-auto mt-9">
-              <thead class="bg-yellow-600 text-white">
-                  <tr>
-                      <th class="px-4 py-2">No.</th>
-                      <th class="px-4 py-2">Priority</th>
-                      <th class="px-4 py-2">Description</th>
-                      <th class="px-4 py-2">Deadline</th>
-                      <th class="px-4 py-2">Status</th>
-                      <th class="px-4 py-2">Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-                      <tr>
-                          {{-- <td class="px-4 py-2"><?= $i; ?></td>
-                          <td class="px-4 py-2"><?= $row["priority"]; ?></td>
-                          <td class="px-4 py-2"><?= $row["description"]; ?></td>
-                          <td class="px-4 py-2"><?= $row["deadline"]; ?></td>
-                          <td class="px-4 py-2"><?= $row["status"]; ?></td>
-                          <td class="px-4 py-2">
-                              <form action="index.php" method="post" class="inline-block">
-                                  <input type="hidden" name="status" value="1">
-                                  <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                  <button type="submit" class="icon-button" title="Start">
-                                      <i class="fas fa-hourglass-start"></i>
-                                  </button>
-                              </form> |
-                              <form action="index.php" method="post" class="inline-block">
-                                  <input type="hidden" name="status" value="2">
-                                  <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                  <button type="submit" class="icon-button" title="Done">
-                                      <i class="text-green-500 fas fa-check"></i>
-                                  </button>
-                              </form>
-                              |
-                              <a href="edit.php?id=<?= $row["id"]; ?>" class="text-blue-500"><i class="fas fa-pencil-alt"></i></a> |
-                              <a href="delete.php?id=<?= $row["id"]; ?>" onclick="return confirm('yakin?');" class="text-red-500"><i class="fas fa-trash-alt"></i></a>
-                          </td> --}}
-                      </tr>
-              </tbody>
-          </table>
+        <table class="border-collapse border border-slate-950 w-full table-auto mt-9">
+          <thead class="bg-orange-500 text-white">
+              <tr class="border-collapse border border-slate-950">
+                  <th class="px-4 py-2 border border-slate-950">No.</th>
+                  <th class="px-4 py-2 border border-slate-950">Priority</th>
+                  <th class="px-4 py-2 border border-slate-950">Description</th>
+                  <th class="px-4 py-2 border border-slate-950">Deadline</th>
+                  <th class="px-4 py-2 border border-slate-950">Status</th>
+                  <th class="px-4 py-2 border border-slate-950">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              @foreach($task as $t)
+              <tr class="text-center border-t border-gray-300">
+                  <td class="px-4 py-2 border border-slate-950 text-slate-800">{{ $t->id; }}</td>
+                  <td class="px-4 py-2 border border-slate-950 text-slate-800">{{ $t->priority; }}</td>
+                  <td class="px-4 py-2 border border-slate-950 text-slate-800">{{ $t->description; }}</td>
+                  <td class="px-4 py-2 border border-slate-950 text-slate-800">{{ $t->deadline; }}</td>
+                  <td class="px-4 py-2 border border-slate-950 text-slate-800">{{ $t->status; }}</td>
+                  <td class="px-4 py-2 border border-slate-950 text-center">
+                    @if($t->status == 'Done')
+                    <form action="status/{{ $t->id }}" method="post" class="inline-block">
+                        @csrf
+                        <button type="submit" class="icon-button" title="Toggle Status">
+                          <i class="fa-solid fa-check text-green-600"></i>
+                        </button>
+                    </form>
+                    @else
+                    <form action="status/{{ $t->id }}" method="post" class="inline-block">
+                        @csrf
+                        <button type="submit" class="icon-button" title="Toggle Status">
+                          <i class="fa-solid fa-hourglass-end text-indigo-600"></i>
+                        </button>
+                    </form>
+                    @endif                    
+                    |
+                    <a href="editTodo/{{ $t->id }}" class="text-blue-500"><i class="fas fa-pencil-alt"></i></a> |
+                    <a href="delete/{{ $t->id }}" onclick="return confirmDelete()" class="text-red-500"><i class="fas fa-trash-alt"></i></a>
+                </td>                       
+              </tr>
+              @endforeach
+          </tbody>
+      </table>      
       </section>
   </div>
+
+  <script>
+    function confirmDelete() {
+    return confirm("Apakah Anda yakin ingin menghapus tugas ini?");
+}
+</script>
