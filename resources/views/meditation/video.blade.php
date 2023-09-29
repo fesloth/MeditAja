@@ -86,7 +86,6 @@
           </div>
       </div>
   </div>
-
     <!-- Pagination -->
     <div class="flex justify-center mt-16 mb-36">
         <button class="bg-orange-500 text-white px-4 py-2 rounded-l-full hover:bg-orange-600">Previous</button>
