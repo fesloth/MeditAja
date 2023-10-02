@@ -8,6 +8,26 @@ use Illuminate\Http\Request;
 class ContentController extends Controller
 {
     // views 
+    public function index()
+    {
+
+        $task = Todo::get();
+        // Menghitung statistik
+        $totalTasks = count($task);
+        $completedTasks = $task->where('status', 'Done')->count();
+        $uncompletedTasks = $totalTasks - $completedTasks;
+        $completionPercentage = $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
+
+        return view('meditation.progress', [
+            'title' => 'Progress',
+            'task' => $task,
+            'totalTasks' => $totalTasks,
+            'completedTasks' => $completedTasks,
+            'uncompletedTasks' => $uncompletedTasks,
+            'completionPercentage' => $completionPercentage,
+        ]);
+    }
+
     public function todo()
     {
         $task = Todo::get();

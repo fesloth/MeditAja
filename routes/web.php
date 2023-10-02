@@ -37,8 +37,8 @@ Route::get('delete/{id}', [ContentController::class, 'delete']);
 Route::get('/timer', [ContentController::class, 'timer']);
 Route::get('/video', [ContentController::class, 'video']);
 Route::get('/mood', [ContentController::class, 'mood']);
+Route::get('/progress', [ContentController::class, 'index']);
 
-Route::get('/progress', [UsersController::class, 'index']);
 Route::get('/profile', [UsersController::class, 'profile']);
 Route::get('/edit', [UsersController::class, 'edit']);
 

@@ -8,12 +8,12 @@ class UsersController extends Controller
 {
     //views
 
-    public function index()
-    {
-        return view('users.progress', [
-            "title" => "Progress"
-        ]);
-    }
+    // public function index()
+    // {
+    //     return view('users.progress', [
+    //         "title" => "Progress"
+    //     ]);
+    // }
 
     public function profile()
     {
