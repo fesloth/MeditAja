@@ -45,5 +45,6 @@ Route::get('/edit', [UsersController::class, 'edit']);
 Route::get('/login', [SessionController::class, 'login'])->name('session.login');
 Route::post('/login', [SessionController::class, 'loginProses']);
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');
+Route::post('/register', [SessionController::class, 'registerProses']);
 
 Route::get('/admin', [AdminController::class, 'index']);

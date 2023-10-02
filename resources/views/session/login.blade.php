@@ -5,6 +5,11 @@
         <form action="#" method="post">
             @csrf
             @method('post')
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="p-5">
                 <h3 class="text-center text-2xl font-semibold mb-6 text-orange-800">Login</h3>
                 <label for="username" class="block mb-4">
@@ -51,11 +56,6 @@
         @if($message = Session::get('failed'))
         <script>
             alert('Email atau Password salah')
-        </script>
-        @endif
-        @if($message = Session::get('success'))
-        <script>
-            alert('Selamat registrasi berhasil! Silahkan login kembali.')
         </script>
         @endif
     </div>
