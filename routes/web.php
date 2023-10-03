@@ -40,6 +40,7 @@ Route::get('/mood', [ContentController::class, 'mood']);
 Route::get('/progress', [ContentController::class, 'index']);
 
 Route::get('/profile', [UsersController::class, 'profile']);
+Route::post('/profile', [UsersController::class, 'updateProfile'])->name('profile.update');
 Route::get('/edit', [UsersController::class, 'edit']);
 
 Route::get('/login', [SessionController::class, 'login'])->name('session.login');
@@ -48,3 +49,4 @@ Route::get('/register', [SessionController::class, 'register'])->name('session.r
 Route::post('/register', [SessionController::class, 'registerProses']);
 
 Route::get('/admin', [AdminController::class, 'index']);
+Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
