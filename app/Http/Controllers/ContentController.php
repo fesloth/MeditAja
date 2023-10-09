@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
 {
     // views 
     public function index()
     {
+        $user = Auth::user(); 
 
         $task = Todo::get();
         // Menghitung statistik
@@ -25,6 +27,7 @@ class ContentController extends Controller
             'completedTasks' => $completedTasks,
             'uncompletedTasks' => $uncompletedTasks,
             'completionPercentage' => $completionPercentage,
+            "user" => $user
         ]);
     }
 
@@ -106,12 +109,12 @@ class ContentController extends Controller
         $task = Todo::find($id);
 
         if (!$task) {
-            return redirect('/todo')->with('error', 'Data produk tidak ditemukan.');
+            return redirect('/todo')->with('error', 'tugas tidak ditemukan.');
         }
-        // Hapus data produk
+        // Hapus tugas
         $task->delete();
 
-        return redirect('/todo')->with('success', 'Data produk berhasil dihapus.');
+        return redirect('/todo')->with('success', 'tugas berhasil dihapus.');
     }
 
     public function music()

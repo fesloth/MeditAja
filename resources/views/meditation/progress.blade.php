@@ -39,7 +39,11 @@
         <div class="stat-figure text-secondary">
           <div class="avatar online">
             <div class="w-16 rounded-full">
-              <img src="{{ asset('img/cat.jpg') }}" />
+              @if ($user->profile_image)
+              <img src="{{ asset('storage/' . $user->profile_image) }}">
+              @else
+              <img src="{{ asset('img/user.jpeg') }}" />
+          @endif
             </div>
           </div>
         </div>

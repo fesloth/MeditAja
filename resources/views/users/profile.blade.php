@@ -19,8 +19,12 @@
     <h1 class="mb-5 text-slate-950">Profile</h1>
     <!-- Gambar Pengguna -->
     <div class="w-60 h-60 bg-gray-300 rounded-full flex justify-center items-center mb-4">
+      @if ($user->profile_image)
         <!-- Ganti sumber gambar (src) sesuai dengan gambar pengguna -->
-        <img src="{{ asset('img/cat.jpg') }}" alt="Gambar Pengguna" class="w-60 h-60 rounded-full object-cover">
+        <img src="{{ asset('storage/' . $user->profile_image) }}" alt="Gambar Pengguna" class="w-60 h-60 rounded-full object-cover">
+        @else
+              <img src="{{ asset('img/user.jpeg') }}" class="w-60 h-60 rounded-full object-cover" />
+          @endif
     </div>
     <!-- Tombol Edit User -->
     <h3 class="mb-5 text-slate-950">Username: {{ $user->username }} </h3>

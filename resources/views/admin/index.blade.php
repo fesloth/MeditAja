@@ -57,7 +57,5 @@
 
   </div>
   
-
-@include('partials.footer')
   
   

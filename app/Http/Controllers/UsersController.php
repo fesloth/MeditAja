@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,17 +40,41 @@ class UsersController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // Validasi data yang dikirimkan dari formulir jika diperlukan
+        // Validate data
+        $validator = Validator::make($request->all(), [
+            'new_username' => 'required|string|max:255',
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size as needed
+        ], [
+            'profile_image.image' => 'The profile image must be an image.',
+            'profile_image.mimes' => 'The profile image must be a file of type: jpeg, png, jpg, gif.',
+            'profile_image.max' => 'The profile image may not be greater than 2MB in size.',
+        ]);
 
-        // Ambil pengguna yang saat ini masuk
+        if ($validator->fails()) {
+            return redirect('/edit')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Get the currently logged-in user
         $user = Auth::user();
 
-        // Update username dengan data baru dari formulir
-        $user->username = $request->input('new_username'); // 'new_username' adalah nama input untuk username baru
+        // Update username with the new data from the form
+        $user->username = $request->input('new_username');
 
-        // Simpan perubahan ke dalam database
+        // Handle image upload
+        if ($request->hasFile('profile_image')) {
+            // Store the uploaded image and get its path
+            $imagePath = $request->file('profile_image')->store('profile_images', 'public');
+
+            // Save the image path to the user's profile
+            $user->profile_image = $imagePath;
+        }
+
+        // Save changes to the database
         $user->save();
-        // Redirect ke halaman profil dengan pesan sukses jika diperlukan
-        return redirect('/profile')->with('success', 'Username berhasil diperbarui.');
+
+        // Redirect to the profile page with a success message
+        return redirect('/profile')->with('success', 'Profile updated successfully.');
     }
 }

@@ -20,14 +20,15 @@ class AdminController extends Controller
 
     public function deleteUser($id)
     {
-        $users = User::all();
-
-        if (!$users) {
+        $user = User::find($id);
+    
+        if (!$user) {
             return redirect()->route('admin')->with('error', 'User tidak ditemukan.');
         }
-
-        $users->delete();
-
+    
+        $user->delete();
+    
         return redirect()->route('admin')->with('success', 'User berhasil dihapus.');
     }
+    
 }

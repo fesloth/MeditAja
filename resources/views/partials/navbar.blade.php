@@ -14,8 +14,12 @@
       <!-- Code for authenticated users -->
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img src="{{ asset('img/cat.jpg') }}" />
-        </div>
+          @if ($user->profile_image)
+              <img src="{{ asset('storage/' . $user->profile_image) }}" alt="Avatar Image" />
+          @else
+              <img src="{{ asset('img/user.jpeg') }}" alt="Default Avatar" />
+          @endif
+      </div>      
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-400 rounded-box w-52">
         <li>

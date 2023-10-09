@@ -3,7 +3,7 @@
  <!-- Konten Utama -->
  <div class="container mx-auto mt-40 flex flex-col items-center">
      <!-- Form Edit Profil -->
-     <form action="{{ route('profile.update') }}" method="POST" class="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
         @csrf <!-- Token CSRF Laravel -->
         <h1 class="mb-7 mt-2 font-semibold text-slate-900 text-center text-2xl">Edit Profile</h1>
         <!-- Ubah Username -->
@@ -18,7 +18,7 @@
         <!-- Edit Gambar Profil -->
         <div class="mb-4">
             <label for="profileImage" class="block text-gray-700 text-sm font-bold mb-2">Gambar Profil</label>
-            <input type="file" class="file-input file-input-bordered file-input-md w-full text-slate-800 bg-white" />
+            <input type="file" name="profile_image" class="file-input file-input-bordered file-input-md w-full text-slate-800 bg-white" />
         </div>
         <!-- Tombol Simpan -->
         <div class="text-center mb-3">

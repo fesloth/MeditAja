@@ -47,8 +47,8 @@ Route::middleware(['web'])->group(function () {
     Route::post('/profile', [UsersController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
     Route::get('/edit', [UsersController::class, 'edit'])->middleware('auth');    
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
-Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser')->middleware('auth');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
+Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
 
 Route::get('/login', [SessionController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'loginProses']);
