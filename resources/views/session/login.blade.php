@@ -32,16 +32,20 @@
                         class="px-4 py-2 border rounded w-full text-slate-950 bg-gray-100 text-sm placeholder-slate-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:border-yellow-500 invalid:text-red-900 invalid:focus:ring-red-800 invalid:focus:border-red-700 peer"
                     />
                 </label>
-                <label for="password" class="block mb-4">
+                <label for="password" class="block mb-4 relative">
                     <span class="block font-semibold text-slate-600">Password :</span>
                     <input
                         type="password"
                         id="password"
                         name="password"
                         placeholder="Masukkan password"
-                        class="px-4 py-2 border rounded w-full bg-gray-100 text-sm placeholder-slate-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:border-yellow-500"
+                        class="px-4 py-2 border rounded w-full text-slate-950 bg-gray-100 text-sm placeholder-slate-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:border-yellow-500"
                     />
-                </label>
+                    <span id="show-password" class="absolute top-[58%] right-3 transform cursor-pointer">
+                        <i id="show-icon" class="fas fa-eye text-gray-400 hover:text-gray-600"></i> <!-- Ikon mata terbuka -->
+                        <i id="hide-icon" class="fas fa-eye-slash text-gray-400 hover:text-gray-600" style="display:none;"></i> <!-- Ikon mata tercoret (tersembunyi) -->
+                    </span>
+                </label>                               
                 <button
                     type="submit"
                     class="bg-orange-700 hover:bg-yellow-700 text-white px-6 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-yellow-400 focus:border-yellow-500"
@@ -54,9 +58,27 @@
             </div>
         </form>
         @if($message = Session::get('failed'))
-        <script>
-            alert('Email atau Password salah')
-        </script>
+        <p class="text-red-400">Email atau Password salah</p>
         @endif
+        <script>
+            const passwordInput = document.getElementById("password");
+            const showPasswordButton = document.getElementById("show-password");
+            const showIcon = document.getElementById("show-icon");
+            const hideIcon = document.getElementById("hide-icon");
+            let passwordVisible = false;
+        
+            showPasswordButton.addEventListener("click", function () {
+                if (passwordVisible) {
+                    passwordInput.type = "password";
+                    showIcon.style.display = "block";
+                    hideIcon.style.display = "none";
+                } else {
+                    passwordInput.type = "text";
+                    showIcon.style.display = "none";
+                    hideIcon.style.display = "block";
+                }
+                passwordVisible = !passwordVisible;
+            });
+        </script>           
     </div>
 </div>
