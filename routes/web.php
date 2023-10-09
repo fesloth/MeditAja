@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,31 +23,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [MainController::class, 'index']);
-Route::get('/premium', [MainController::class, 'premium']);
-Route::get('/music', [MainController::class, 'music']);
 
-Route::get('/todo', [ContentController::class, 'todo']);
-Route::get('/createTodo', [ContentController::class, 'createTodo']);
-Route::post('/storeTodo', [ContentController::class, 'storeTodo']);
-Route::post('status/{id}', [ContentController::class, 'status']);
-Route::get('/editTodo/{id}', [ContentController::class, 'edit']);
-Route::put('/editTodo/update/{id}', [ContentController::class, 'update']);
-Route::get('delete/{id}', [ContentController::class, 'delete']);
+Route::middleware(['web'])->group(function () {
+    Route::get('/', [MainController::class, 'index']);
+    Route::get('/premium', [MainController::class, 'premium'])->middleware('auth');
+    Route::get('/music', [MainController::class, 'music'])->middleware('auth');
+    
+    
+    Route::get('/timer', [ContentController::class, 'timer'])->middleware('auth');
+    Route::get('/video', [ContentController::class, 'video'])->middleware('auth');
+    Route::get('/mood', [ContentController::class, 'mood'])->middleware('auth');
+    Route::get('/progress', [ContentController::class, 'index'])->middleware('auth');
+    
+    Route::get('/todo', [ContentController::class, 'todo'])->middleware('auth');
+    Route::get('/createTodo', [ContentController::class, 'createTodo'])->middleware('auth');
+    Route::post('/storeTodo', [ContentController::class, 'storeTodo'])->middleware('auth');
+    Route::post('status/{id}', [ContentController::class, 'status'])->middleware('auth');
+    Route::get('/editTodo/{id}', [ContentController::class, 'edit'])->middleware('auth');
+    Route::put('/editTodo/update/{id}', [ContentController::class, 'update'])->middleware('auth');
+    Route::get('delete/{id}', [ContentController::class, 'delete'])->middleware('auth');
+    
+    Route::get('/profile', [UsersController::class, 'profile'])->middleware('auth');
+    Route::post('/profile', [UsersController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+    Route::get('/edit', [UsersController::class, 'edit'])->middleware('auth');    
 
-Route::get('/timer', [ContentController::class, 'timer']);
-Route::get('/video', [ContentController::class, 'video']);
-Route::get('/mood', [ContentController::class, 'mood']);
-Route::get('/progress', [ContentController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser')->middleware('auth');
 
-Route::get('/profile', [UsersController::class, 'profile']);
-Route::post('/profile', [UsersController::class, 'updateProfile'])->name('profile.update');
-Route::get('/edit', [UsersController::class, 'edit']);
-
-Route::get('/login', [SessionController::class, 'login'])->name('session.login');
+Route::get('/login', [SessionController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'loginProses']);
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');
 Route::post('/register', [SessionController::class, 'registerProses']);
+Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+});

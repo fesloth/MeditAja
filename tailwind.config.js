@@ -6,7 +6,11 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bal: ["Balsamiq Sans"],
+      },
+    },
   },
   plugins: [require("daisyui")],
 }

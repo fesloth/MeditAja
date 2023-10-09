@@ -7,7 +7,7 @@
   <div class="flex-none">
     <ul class="mr-8">
       <li>
-          <a href="{{ route('session.login') }}" class="hover:bg-orange-300 p-3 rounded-md">Logout</a>
+          <a href="{{ route('logout') }}" class="hover:bg-orange-300 p-3 rounded-md">Logout</a>
       </li>
   </ul>  
   </div>

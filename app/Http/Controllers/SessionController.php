@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
@@ -61,5 +62,11 @@ class SessionController extends Controller
             // Validasi gagal atau password tidak sesuai dengan konfirmasi
             return redirect()->back()->withInput()->withErrors(['password' => 'Password dan konfirmasi password tidak cocok.']);
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/'); // Anda bisa mengganti URL redirect sesuai kebutuhan
     }
 }
