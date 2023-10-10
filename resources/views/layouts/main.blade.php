@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="bg-[F0DECA] scroll-smooth">
+<html lang="en" class="bg-[FBF6CD] scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

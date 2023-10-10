@@ -36,7 +36,7 @@
           <button class="bg-gray-500 text-white px-4 py-2 rounded-md" onclick="resetTimer()">Reset</button>
         </div>
         <div class="mt-3 flex justify-end items-end text-end">
-            <a href="/todo" class="text-orange-600 hover:text-orange-700">
+            <a href="/todo" class="text-green-600 hover:text-green-700">
                 <i class="fas fa-arrow-left"></i> Back
             </a>
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-  <div class="container">
+  {{-- <div class="container">
     <div class="navbar bg-orange-700 text-white shadow-xl">
       <div class="flex-1 pl-5">
         <a class="btn btn-ghost normal-case text-xl">User Point <i class="fa-solid fa-star"></i></a>
@@ -12,8 +12,45 @@
         </div>
       </div>
     </div>
-  </div>
-  <h1 class="text-4xl m-10 font-semibold text-yellow-600 mt-36 text-center">Progress Anda</h1>
+  </div> --}}
+  <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
+    <div class="flex-1 pl-5">
+      <a href="#" class="btn btn-ghost normal-case text-xl">User Point <i class="fa-solid fa-star"></i></a>
+    </div>
+    <div class="flex-none">
+      <div class="pr-5">
+        <div class="flex items-stretch">
+          <a href="/" class="btn btn-ghost rounded-btn">Beranda</a>
+          <div class="dropdown dropdown-end">
+            <!-- Dropdown "Produktivitas" -->
+            <label tabindex="0" class="btn btn-ghost">
+              <div class="rounded-btn">
+                <!-- Icon untuk dropdown "Produktivitas" -->
+                Produktivitas <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
+              <!-- Tautan untuk fitur-fitur -->
+              <li>
+                <a href="/video" class="justify-between">
+                  Video Meditasi
+                </a>
+              </li>
+              <li><a href="/mood">Mood Tracker</a></li>
+              <li>
+                <a href="/todo">
+                  To-Do List
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown dropdown-end mr-8">
+    </div>
+</div>
+  <h1 class="text-4xl m-10 font-semibold text-green-600 mt-36 text-center">Progress Anda</h1>
   <div class="container flex justify-center items-center">
     <div class="stats shadow text-center bg-white mb-36">
       <div class="stat">

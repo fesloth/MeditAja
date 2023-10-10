@@ -22,10 +22,10 @@
         </div>
         <!-- Tombol Simpan -->
         <div class="text-center mb-3">
-            <button type="submit" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Simpan</button>
+            <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg hover:bg-lime-600">Simpan</button>
         </div>
         <!-- Tombol Back dengan Font Awesome -->
-        <a href="/profile" class="mt-4 text-orange-500 hover:text-orange-600">
+        <a href="/profile" class="mt-4 text-lime-500 hover:text-lime-600">
             <i class="fas fa-arrow-left"></i> Back
         </a>
     </form>

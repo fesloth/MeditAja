@@ -1,17 +1,20 @@
 @extends('layouts.main')
 
 <div class="navbar bg-orange-700 text-white">
-  <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">PAM</a>
-  </div>
-  <div class="flex-none">
-    <ul class="mr-8">
-      <li>
+    <div class="flex-1">
+      <a class="btn btn-ghost normal-case text-xl">PAM</a>
+    </div>
+    <div class="flex-none">
+      <ul class="mr-8 flex space-x-4">
+        <li>
+          <a href="{{ route('adminTransaksi') }}" class="hover:bg-orange-300 p-3 rounded-md">Data Transaksi</a>
+        </li>
+        <li>
           <a href="{{ route('logout') }}" class="hover:bg-orange-300 p-3 rounded-md">Logout</a>
-      </li>
-  </ul>  
+        </li>
+      </ul>  
+    </div>
   </div>
-</div>
   <div class="flex flex-col justify-center items-center my-20">
     <h1 class="text-3xl mb-4">Selamat Datang <span class="text-indigo-600">Admin!</span></h1>
     <div class="relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4">

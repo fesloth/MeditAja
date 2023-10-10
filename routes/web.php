@@ -48,7 +48,11 @@ Route::middleware(['web'])->group(function () {
     Route::get('/edit', [UsersController::class, 'edit'])->middleware('auth');    
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
-Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser')->middleware('auth');
+Route::get('/adminUserTransaksi', [AdminController::class, 'transaksiUser'])->name('adminTransaksi')->middleware('auth');
+Route::get('/admin/showUserTransactions/{userId}', [AdminController::class, 'showUserTransactions'])->name('admin.showUserTransactions');
+Route::get('/admin/deleteTransaction/{transactionId}', [AdminController::class, 'deleteTransaction'])->name('admin.deleteTransaction');
+
 
 Route::get('/login', [SessionController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'loginProses']);
@@ -56,7 +60,7 @@ Route::get('/register', [SessionController::class, 'register'])->name('session.r
 Route::post('/register', [SessionController::class, 'registerProses']);
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
-Route::get('/checkout/{harga}', [PembayaranController::class, 'index']); 
+Route::get('/checkout/{harga}', [PembayaranController::class, 'index'])->middleware('auth');
 Route::get('/premium', [PembayaranController::class, 'premium'])->middleware('auth');
 Route::post('/process-payment', [PembayaranController::class, 'processPayment']); 
 
