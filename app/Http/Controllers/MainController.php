@@ -17,13 +17,6 @@ class MainController extends Controller
         ]);
     }
 
-    public function premium()
-    {
-        return view('dashboard.premium', [
-            "title" => "Premium"
-        ]);
-    }
-
     public function music()
     {
         return view('dashboard.music', [

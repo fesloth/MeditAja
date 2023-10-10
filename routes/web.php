@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,6 @@ Route::get('/', function () {
 
 Route::middleware(['web'])->group(function () {
     Route::get('/', [MainController::class, 'index']);
-    Route::get('/premium', [MainController::class, 'premium'])->middleware('auth');
     Route::get('/music', [MainController::class, 'music'])->middleware('auth');
     
     
@@ -55,5 +55,9 @@ Route::post('/login', [SessionController::class, 'loginProses']);
 Route::get('/register', [SessionController::class, 'register'])->name('session.register');
 Route::post('/register', [SessionController::class, 'registerProses']);
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
+
+Route::get('/checkout/{harga}', [PembayaranController::class, 'index']); 
+Route::get('/premium', [PembayaranController::class, 'premium'])->middleware('auth');
+Route::post('/process-payment', [PembayaranController::class, 'processPayment']); 
 
 });
