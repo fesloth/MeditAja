@@ -2,7 +2,7 @@
 
 @include('partials.navbar')
 
-<section class="hero-container mx-32 mt-36 mb-36">
+<section class="hero-container mx-52 mt-36 mb-36">
   <div class="hero-content flex items-center">
     <div class="hero-text flex-1">
       <h1 class="text-4xl font-semibold text-[#2d334a] mb-4">Saatnya untuk menggabungkan harmoni batin dan pertumbuhan pribadi di MeditAja</h1>
@@ -14,7 +14,7 @@
   </div>
 </section>
 
-<section class="content-container mx-32 mt-10 mb-36">
+<section class="content-container mx-52 mt-10 mb-36">
   <div class="content-flex flex items-center">
     <div class="content-image">
       <img src="/path/to/your/second-image.jpg" alt="Second Image" class="w-80 h-auto" />
@@ -27,7 +27,7 @@
   </div>
 </section>
 
-<section class="content-container mx-32 mt-10 mb-36">
+<section class="content-container mx-52 mt-10 mb-36">
   <div class="content-flex flex items-center">
     <div class="content-text flex-1 mr-8">
       <h2 class="text-2xl font-semibold text-[#2d334a] mb-4">Tingkatkan Produktivitasmu</h2>
@@ -40,8 +40,7 @@
   </div>
 </section>
 
-
-<section class="content-container mx-32 mt-10">
+<section class="content-container mx-52 mt-10">
   <div class="content-flex flex items-center text-center">
     <div class="content-text flex-1">
       <h1 class="text-4xl font-semibold text-[#2d334a] mb-2">Apa yang terjadi hari ini?</h1>
@@ -50,9 +49,9 @@
   </div>
 </section>
 
-<div class="cards-container flex mx-32 mb-36">
+<div class="cards-container flex mx-52 mb-36">
   <!-- Card 1 -->
-  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl">
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
       <h2 class="card-title">Tenangkan pikiran sejenak dengan mendengarkan lagu</h2>
       <div class="card-actions">
@@ -62,7 +61,7 @@
   </div>
 
   <!-- Card 2 -->
-  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl">
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
       <h2 class="card-title">Lihat Grafik Progressmu</h2>
       <div class="card-actions">
@@ -72,7 +71,7 @@
   </div>
 
   <!-- Card 3 -->
-  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl">
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
       <h2 class="card-title">Catat masalah Anda di Mood Tracker!</h2>
       <div class="card-actions">
@@ -81,6 +80,5 @@
     </div>
   </div>
 </div>
-
 
 @include('partials.footer')

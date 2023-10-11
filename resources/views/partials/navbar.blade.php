@@ -1,5 +1,5 @@
-<div class="navbar bg-[91D086] text-slate-900 shadow-xl">
-  <div class="flex-1 pl-5">
+<div class="navbar bg-[91D086] text-slate-900 shadow-xl fixed top-0 left-0 w-full z-[10]">
+  <div class="flex-1 pl-8">
     <!-- Tambahkan atribut data-dropdown-ignore di bawah ini -->
     <a href="#" class="btn btn-ghost normal-case text-xl" data-dropdown-ignore>MeditAja</a>
   </div>
@@ -74,6 +74,7 @@
     @guest
     <!-- Code for guests (not authenticated) -->
     <a href="{{ route('login') }}" class="btn btn-ghost">Login</a>
+    <a href="{{ route('session.register') }}" class="btn btn-ghost">Daftar</a>
     @endguest
   </div>
 </div>
