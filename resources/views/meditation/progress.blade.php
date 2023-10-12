@@ -52,7 +52,7 @@
 </div>
   <h1 class="text-4xl m-10 font-semibold text-green-600 mt-36 text-center">Progress Anda</h1>
   <div class="container flex justify-center items-center">
-    <div class="stats shadow text-center bg-white mb-36">
+    <div class="stats shadow text-center bg-white mb-12">
         <div class="stat">
             <div class="stat-figure text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
@@ -92,6 +92,66 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
+  <div class="text-center mb-32 text-slate-950">
+    <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Analisis Mood Anda</h2>
+    @if (count($moodData) > 0)
+        <p class="text-xl">
+            @php
+                $sadMoods = $moodData->where('mood', 'sedih')->count();
+                $happyMoods = $moodData->where('mood', 'senang')->count();
+                $goodMoods = $moodData->where('mood', 'baik')->count();
+                $neutralMoods = $moodData->where('mood', 'biasa')->count();
+                $badMoods = $moodData->where('mood', 'buruk')->count();
+            @endphp
+       <div class="flex flex-wrap justify-center">
+            <div class="p-4">
+                <div class="bg-red-500 rounded-full p-3">
+                    <i class="fas fa-sad-tear text-white text-2xl"></i>
+                </div>
+                <p class="text-xl mt-4">Mood Sedih: <span class="text-red-600 font-semibold">{{ $sadMoods }}</span></p>
+            </div>
+            <div class="p-4">
+                <div class="bg-green-500 rounded-full p-3">
+                    <i class="fas fa-grin-squint-tears text-white text-2xl"></i>
+                </div>
+                <p class="text-xl mt-4">Mood Senang: <span class="text-green-600 font-semibold">{{ $happyMoods }}</span></p>
+            </div>
+            <div class="p-4">
+                <div class="bg-blue-500 rounded-full p-3">
+                    <i class="fas fa-smile text-white text-2xl"></i>
+                </div>
+                <p class="text-xl mt-4">Mood Baik: <span class="text-blue-600 font-semibold">{{ $goodMoods }}</span></p>
+            </div>
+            <div class="p-4">
+                <div class="bg-gray-500 rounded-full p-3">
+                    <i class="fas fa-meh text-white text-2xl"></i>
+                </div>
+                <p class="text-xl mt-4">Mood Biasa: <span class="text-gray-600 font-semibold">{{ $neutralMoods }}</span></p>
+            </div>
+            <div class="p-4">
+                <div class="bg-yellow-500 rounded-full p-3">
+                    <i class="fas fa-frown text-white text-2xl"></i>
+                </div>
+                <p class="text-xl mt-4">Mood Buruk: <span class="text-yellow-600 font-semibold">{{ $badMoods }}</span></p>
+            </div>
+        </div>
 
+        <p class="text-xl mt-8">
+          @if ($sadMoods > $happyMoods && $sadMoods > $goodMoods && $sadMoods > $neutralMoods && $sadMoods > $badMoods)
+              {{ $user->username }}, Sepertinya Anda sering merasa sedih. Apakah semuanya baik-baik saja?
+          @elseif ($goodMoods > $sadMoods && $goodMoods > $happyMoods && $goodMoods > $neutralMoods && $goodMoods > $badMoods)
+              Hai, {{ $user->username }}! Anda tampaknya dalam suasana hati yang baik sebagian besar waktu. Pertahankan!
+          @elseif ($neutralMoods > $sadMoods && $neutralMoods > $happyMoods && $neutralMoods > $goodMoods && $neutralMoods > $badMoods)
+              {{ $user->username }}, Mood Anda cenderung biasa. Ini adalah bagian normal dari kehidupan.
+          @elseif ($badMoods > $sadMoods && $badMoods > $happyMoods && $badMoods > $goodMoods && $badMoods > $neutralMoods)
+              Tampaknya {{ $user->username }} mengalami beberapa mood buruk. Apakah ada yang bisa kami lakukan untuk membantu?
+          @else
+              Hai, {{ $user->username }}! Mood Anda tampaknya bervariasi. Ini adalah bagian normal dari kehidupan.
+          @endif
+      </p>      
+    @else
+        <p class="text-xl">Tidak ada data mood yang tersedia.</p>
+    @endif
+</div>
   @include('partials.footer')

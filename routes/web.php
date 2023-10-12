@@ -33,6 +33,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/timer', [ContentController::class, 'timer'])->middleware('auth');
     Route::get('/video', [ContentController::class, 'video'])->middleware('auth');
     Route::get('/mood', [ContentController::class, 'mood'])->middleware('auth');
+    Route::post('/moodStore', [ContentController::class, 'store'])->name('mood.store')->middleware('auth');
     Route::get('/progress', [ContentController::class, 'index'])->middleware('auth');
     
     Route::get('/todo', [ContentController::class, 'todo'])->middleware('auth');

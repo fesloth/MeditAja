@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mood;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,16 +13,18 @@ class ContentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
+
+        $moodData = Mood::where('user_id', $user->id)->get();
+
         // Menghitung statistik hanya untuk tugas milik pengguna yang saat ini masuk
         $task = Todo::where('user_id', $user->id)->get();
-        
+
         // Menghitung statistik
         $totalTasks = count($task);
         $completedTasks = $task->where('status', 'Done')->count();
         $uncompletedTasks = $totalTasks - $completedTasks;
         $completionPercentage = $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
-    
+
         return view('meditation.progress', [
             'title' => 'Progress',
             'task' => $task,
@@ -29,9 +32,10 @@ class ContentController extends Controller
             'completedTasks' => $completedTasks,
             'uncompletedTasks' => $uncompletedTasks,
             'completionPercentage' => $completionPercentage,
+            'moodData' => $moodData,
             "user" => $user
         ]);
-    }    
+    }
 
     public function todo()
     {
@@ -50,23 +54,23 @@ class ContentController extends Controller
     public function storeTodo(Request $request)
     {
         // Validasi data yang dikirimkan dari formulir jika diperlukan
-    
+
         $user = Auth::user(); // Mengambil pengguna yang sedang masuk
-    
+
         $task = new Todo();
         $task->description = $request->description;
         $task->deadline = $request->deadline;
         $task->priority = $request->priority;
         $task->status = $request->status ?? 'On progress';
-    
+
         // Mengaitkan tugas dengan pengguna yang sedang masuk
         $task->user_id = $user->id;
-    
+
         $task->save();
-    
+
         // Redirect atau tampilkan pesan sukses
         return redirect('/todo')->with('success', 'Task produk berhasil ditambahkan.');
-    }    
+    }
 
     public function edit($id)
     {
@@ -147,8 +151,62 @@ class ContentController extends Controller
 
     public function mood()
     {
+        // Array of random inspirational messages
+        $inspirationalMessages = [
+            "Kamu telah melakukan hal yang baik hari ini, selamat!",
+            "Tetap Semangat!",
+            "Setiap hari adalah peluang baru.",
+            "Semangat! Ayo tersenyum untuk hari ini!",
+            "Bersyukur selalu membuat hari menjadi lebih baik.",
+            "Ketika hidup memberimu alasan untuk menyerah, berikan alasan untuk tetap melangkah.",
+            "Keberhasilan dimulai dengan langkah pertama. Lakukan sekarang!",
+            "Hari ini adalah hari yang bagus untuk menciptakan masa depan yang cerah.",
+            "Setiap masalah memiliki solusi. Terus berpikir positif!",
+            "Saat kita bersyukur, hidup menjadi lebih indah.",
+        ];
+
+        // Get a random message from the array
+        $randomMessage = $inspirationalMessages[array_rand($inspirationalMessages)];
+
         return view('meditation.moodtracker', [
-            "title" => "Mood Tracker"
+            "title" => "Mood Tracker",
+            "success" => 'Mood successfully stored.',
+            "randomMessage" => $randomMessage
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'mood' => 'required|max:255',
+            'description' => 'nullable',
+        ]);
+
+        // Create a new Mood instance and save it to the database
+        $newMood = Mood::create([
+            'user_id' => auth()->id(), // Assuming you're associating moods with the currently authenticated user.
+            'mood' => $validatedData['mood'],
+            'description' => $validatedData['description'],
+        ]);
+
+        // Array of random inspirational messages
+        $inspirationalMessages = [
+            "Kamu telah melakukan hal yang baik hari ini, selamat!",
+            "Tetap Semangat!",
+            "Setiap hari adalah peluang baru.",
+            "Semangat! Ayo tersenyum untuk hari ini!",
+            "Bersyukur selalu membuat hari menjadi lebih baik.",
+            "Ketika hidup memberimu alasan untuk menyerah, berikan alasan untuk tetap melangkah.",
+            "Keberhasilan dimulai dengan langkah pertama. Lakukan sekarang!",
+            "Hari ini adalah hari yang bagus untuk menciptakan masa depan yang cerah.",
+            "Setiap masalah memiliki solusi. Terus berpikir positif!",
+            "Saat kita bersyukur, hidup menjadi lebih indah.",
+        ];
+
+        // Get a random message from the array
+        $randomMessage = $inspirationalMessages[array_rand($inspirationalMessages)];
+
+        return redirect('/mood')->with('success', 'Mood successfully stored.')->with('randomMessage', $randomMessage);
     }
 }

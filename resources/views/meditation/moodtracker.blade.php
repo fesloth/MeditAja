@@ -1,20 +1,5 @@
 @extends('layouts.main')
 
-{{-- <div class="container mx-auto">
-    <div class="navbar bg-orange-700 text-white shadow-xl">
-        <div class="flex-1 pl-5">
-            <a class="btn btn-ghost normal-case text-xl">Mood Tracker <i class="fa-solid fa-face-smile"></i></a>
-        </div>
-        <div class="flex-none">
-            <div class="dropdown dropdown-end pr-5">
-                <div class="flex items-stretch">
-                    <a href="/" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-angle-left fa-rotate-180"></i>Back</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
     <div class="flex-1 pl-5">
       <a href="#" class="btn btn-ghost normal-case text-xl">Mood Tracker <i class="fa-solid fa-face-smile"></i></a>
@@ -53,12 +38,43 @@
     </div>
 </div>
 
-<div class="container mx-auto mt-44 text-center">
-    <h1 class="text-2xl font-semibold text-slate-800">Apa Keluhan Anda Hari Ini?</h1>
-    <div class="w-3/4 mx-auto mt-4">
-      <textarea class="w-full h-48 p-4 bg-white text-slate-600 border rounded-lg resize-y" placeholder="Tulis keluhan Anda di sini..."></textarea>
-  </div>
-    <button class="bg-[6EA066] text-white px-4 py-2 rounded-lg mt-4 hover:bg-orange-700 mb-40">Kirim</button>
+<div class="container mx-auto mt-24 mb-24 text-center">
+    <h1 class="text-2xl font-semibold text-slate-800">Apa yang terjadi hari ini?</h1>
+    <form method="post" action="{{ route('mood.store') }}">
+        @csrf
+        <div class="w-3/4 mx-auto mt-4">
+          <label for="mood">Mood</label>
+          <select name="mood" id="mood" class="w-full p-4 bg-white text-slate-600 border rounded-lg">
+            <option value="" disabled>Choose your mood</option>
+            <option value="sedih">Sedih</option>
+            <option value="senang">Senang</option>
+            <option value="baik">Baik</option>
+            <option value="buruk">Buruk</option>
+            <option value="biasa">Biasa Saja</option>
+            <option value="other">Lainnya</option>
+            <!-- Add more options as needed -->
+        </select>        
+      </div>
+        <div class="w-3/4 mx-auto mt-4">
+            <label for="description">Deskripsi</label>
+            <textarea name="description" id="description" class="w-full p-4 bg-white text-slate-600 border rounded-lg resize-y" placeholder="Tulis keluhan Anda di sini..."></textarea>
+        </div>
+        <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg mt-4 hover:bg-green-700">Kirim</button>
+    </form>
 </div>
+<script>
+  // Get the select element
+  const moodSelect = document.getElementById('mood');
 
+  // Clear the selected option
+  moodSelect.selectedIndex = -1;
+
+  @if(session('success'))
+  Swal.fire({
+    title: 'Mood Successfully Stored',
+    text: '{{$randomMessage}}', 
+    icon: 'success',
+  });
+  @endif
+</script>
 @include('partials.footer')
