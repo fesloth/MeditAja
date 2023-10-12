@@ -40,7 +40,7 @@
     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
       <div class="w-10 rounded-full">
         @if ($user->profile_image)
-            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="Avatar Image" />
+            <img src="{{ asset('storage/' . $user->profile_image) }}"/>
         @else
             <img src="{{ asset('img/user.jpeg') }}" alt="Default Avatar" />
         @endif

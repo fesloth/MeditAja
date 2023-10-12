@@ -11,15 +11,17 @@ class ContentController extends Controller
     // views 
     public function index()
     {
-        $user = Auth::user(); 
-
-        $task = Todo::get();
+        $user = Auth::user();
+        
+        // Menghitung statistik hanya untuk tugas milik pengguna yang saat ini masuk
+        $task = Todo::where('user_id', $user->id)->get();
+        
         // Menghitung statistik
         $totalTasks = count($task);
         $completedTasks = $task->where('status', 'Done')->count();
         $uncompletedTasks = $totalTasks - $completedTasks;
         $completionPercentage = $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
-
+    
         return view('meditation.progress', [
             'title' => 'Progress',
             'task' => $task,
@@ -29,7 +31,7 @@ class ContentController extends Controller
             'completionPercentage' => $completionPercentage,
             "user" => $user
         ]);
-    }
+    }    
 
     public function todo()
     {
@@ -48,18 +50,23 @@ class ContentController extends Controller
     public function storeTodo(Request $request)
     {
         // Validasi data yang dikirimkan dari formulir jika diperlukan
-
+    
+        $user = Auth::user(); // Mengambil pengguna yang sedang masuk
+    
         $task = new Todo();
         $task->description = $request->description;
         $task->deadline = $request->deadline;
         $task->priority = $request->priority;
         $task->status = $request->status ?? 'On progress';
-
+    
+        // Mengaitkan tugas dengan pengguna yang sedang masuk
+        $task->user_id = $user->id;
+    
         $task->save();
-
+    
         // Redirect atau tampilkan pesan sukses
         return redirect('/todo')->with('success', 'Task produk berhasil ditambahkan.');
-    }
+    }    
 
     public function edit($id)
     {

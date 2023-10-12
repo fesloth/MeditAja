@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('todo', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Tambahkan kolom user_id
             $table->string('priority');
             $table->text('description');
             $table->string('deadline');
             $table->string('status');
             $table->timestamps();
+
+            // Tambahkan foreign key constraint ke tabel 'users'
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -26,6 +30,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todo');
+        Schema::table('todo', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
+        Schema::dropIfExists('todos');
     }
 };
+

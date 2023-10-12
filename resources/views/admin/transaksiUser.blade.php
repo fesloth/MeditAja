@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-<div class="navbar bg-orange-700 text-white">
+<div class="navbar bg-[91D086] text-slate-900 shadow-xl">
     <div class="flex-1">
       <a class="btn btn-ghost normal-case text-xl">PAM</a>
     </div>
@@ -29,7 +29,7 @@
                 <td class="text-slate-900 p-3">{{ $user->name }}</td>
                 <td class="text-slate-900 p-3">{{ $user->email }}</td>
                 <td class="p-3">
-                    <a href="{{ route('admin.showUserTransactions', $user->id) }}" class="text-slate-500 cursor-pointer">Lihat Transaksi</a>
+                    <a href="{{ route('admin.showUserTransactions', $user->id) }}" class="text-slate-900 cursor-pointer">Lihat Transaksi</a>
                 </td>
             </tr>
             @endforeach

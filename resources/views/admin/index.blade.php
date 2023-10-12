@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-<div class="navbar bg-orange-700 text-white">
+<div class="navbar bg-[91D086] text-slate-900 shadow-xl w-full">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl">PAM</a>
+      <a class="btn btn-ghost normal-case text-xl">MeditAja</a>
     </div>
     <div class="flex-none">
       <ul class="mr-8 flex space-x-4">
         <li>
-          <a href="{{ route('adminTransaksi') }}" class="hover:bg-orange-300 p-3 rounded-md">Data Transaksi</a>
+          <a href="{{ route('adminTransaksi') }}" class="hover:bg-green-300 p-3 rounded-md">Data Transaksi</a>
         </li>
         <li>
-          <a href="{{ route('logout') }}" class="hover:bg-orange-300 p-3 rounded-md">Logout</a>
+          <a href="{{ route('logout') }}" class="hover:bg-green-300 p-3 rounded-md">Logout</a>
         </li>
       </ul>  
     </div>
@@ -19,7 +19,7 @@
     <h1 class="text-3xl mb-4">Selamat Datang <span class="text-indigo-600">Admin!</span></h1>
     <div class="relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4">
       <table class="w-full shadow-lg divide-gray-200">  
-          <thead class="bg-orange-600">
+          <thead class="bg-[6EA066]">
               <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                       No
@@ -32,7 +32,7 @@
                   </th>
               </tr>
           </thead>
-          <tbody class="bg-orange-300 divide-y divide-gray-200">
+          <tbody class="bg-[91D086] divide-y divide-gray-200">
               @foreach($users as $user)
               <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-slate-900">
