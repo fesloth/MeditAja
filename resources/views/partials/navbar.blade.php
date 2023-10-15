@@ -1,7 +1,9 @@
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl fixed top-0 left-0 w-full z-[10]">
   <div class="flex-1 pl-8">
     <!-- Tambahkan atribut data-dropdown-ignore di bawah ini -->
-    <a href="#" class="btn btn-ghost normal-case text-xl" data-dropdown-ignore>MeditAja</a>
+    <img src="{{ asset('img/flower.png') }}" width="40">
+    <a href="/" class="normal-case text-xl ml-1" data-dropdown-ignore>MeditAja</a>
+
   </div>
   <div class="flex-none">
     <div class="pr-5">
@@ -24,6 +26,7 @@
               </a>
             </li>
             <li><a href="/mood">Mood Tracker</a></li>
+            <li><a href="/notes">Catatan</a></li>
             <li>
               <a href="/todo">
                 To-Do List

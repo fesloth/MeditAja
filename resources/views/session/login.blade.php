@@ -49,6 +49,7 @@
                 <button
                     type="submit"
                     class="bg-lime-600 hover:bg-green-700 text-white px-6 py-2 rounded-full text-sm font-semibold focus:outline-none focus:ring focus:ring-green-400 focus:border-green-500"
+                    onclick="showAlert()"
                 >
                     Login
                 </button>
@@ -57,9 +58,6 @@
                 </p>
             </div>
         </form>
-        @if($message = Session::get('failed'))
-        <p class="text-red-400">Email atau Password salah</p>
-        @endif
         <script>
             const passwordInput = document.getElementById("password");
             const showPasswordButton = document.getElementById("show-password");
@@ -79,6 +77,26 @@
                 }
                 passwordVisible = !passwordVisible;
             });
-        </script>           
+        
+            // function showAlert() {
+            // const emailInput = document.getElementById("email");
+            // const passwordInput = document.getElementById("password");
+            // const usernameInput = document.getElementById("username");
+
+            // if (!emailInput.value || !passwordInput.value) {
+            //     alert("Email dan Password harus diisi.");
+            // } else {
+
+            //         Swal.fire({
+            //             icon: 'success',
+            //             title: 'Selamat datang!',
+            //             text: 'Anda berhasil login.',
+            //             confirmButtonColor: '#28a745',
+            //         }).then(() => {
+            //             window.location.href = '/loginProses';
+            //         });
+            //     } 
+            // }
+        </script>          
     </div>
 </div>

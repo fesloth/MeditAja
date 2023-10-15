@@ -16,32 +16,35 @@ class SessionController extends Controller
             "title" => "login"
         ]);
     }
+
     public function loginProses(Request $request)
     {
-        $credentials = $request->validate([
+        $validatedData = $request->validate([
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
 
         // Cek apakah username dan email adalah "admin" dan "sazzaliee@gmail.com"
-        if ($credentials['username'] === 'syahla' && $credentials['email'] === 'sazzaliee@gmail.com') {
+        if ($validatedData['username'] === 'syahla' && $validatedData['email'] === 'sazzaliee@gmail.com') {
             auth()->login(User::where('email', 'sazzaliee@gmail.com')->first());
             return redirect('/admin');
-        }
+        }        
 
-        if (auth()->attempt($credentials)) {
+        if (auth()->attempt($validatedData)) {
             return redirect('/');
         } else {
             return back()->withErrors(['message' => 'Kredensial tidak valid.'])->withInput();
         }
     }
+
     public function register()
     {
         return view('session.register', [
             "title" => "register"
         ]);
     }
+
     public function registerProses(Request $request)
     {
         $validatedData = $request->validate([

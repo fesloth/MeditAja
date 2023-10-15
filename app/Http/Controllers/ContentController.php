@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mood;
+use App\Models\Note;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,26 @@ class ContentController extends Controller
         $user = Auth::user();
 
         $moodData = Mood::where('user_id', $user->id)->get();
+
+        $jumlahCatatanPekerjaan = Note::where('category', 'Pekerjaan')->where('user_id', $user->id)->count();
+        $jumlahCatatanPribadi = Note::where('category', 'Pribadi')->where('user_id', $user->id)->count();
+        $jumlahCatatanPenting = Note::where('category', 'Penting')->where('user_id', $user->id)->count();
+        $jumlahCatatanBelajar = Note::where('category', 'Belajar')->where('user_id', $user->id)->count();
+        $jumlahCatatanProyek = Note::where('category', 'Proyek')->where('user_id', $user->id)->count();
+        $jumlahCatatanLiburan = Note::where('category', 'Liburan')->where('user_id', $user->id)->count();
+        $jumlahCatatanRutinitas = Note::where('category', 'Rutinitas')->where('user_id', $user->id)->count();
+        $jumlahCatatanKesehatan = Note::where('category', 'Kesehatan')->where('user_id', $user->id)->count();
+        $jumlahCatatanHobi = Note::where('category', 'Hobi')->where('user_id', $user->id)->count();
+        $jumlahCatatanTeknologi = Note::where('category', 'Teknologi')->where('user_id', $user->id)->count();
+        $jumlahCatatanOlahraga = Note::where('category', 'Olahraga')->where('user_id', $user->id)->count();
+        $jumlahCatatanKuliner = Note::where('category', 'Kuliner')->where('user_id', $user->id)->count();
+        $jumlahCatatanSeni = Note::where('category', 'Seni')->where('user_id', $user->id)->count();
+        $jumlahCatatanTugasSekolah = Note::where('category', 'Tugas Sekolah')->where('user_id', $user->id)->count();
+        $jumlahCatatanTravel = Note::where('category', 'Travel')->where('user_id', $user->id)->count();
+        $jumlahCatatanMusik = Note::where('category', 'Musik')->where('user_id', $user->id)->count();
+        $jumlahCatatanFilm = Note::where('category', 'Film')->where('user_id', $user->id)->count();
+        $jumlahCatatanBuku = Note::where('category', 'Buku')->where('user_id', $user->id)->count();
+        $jumlahCatatanOtomotif = Note::where('category', 'Otomotif')->where('user_id', $user->id)->count();
 
         // Menghitung statistik hanya untuk tugas milik pengguna yang saat ini masuk
         $task = Todo::where('user_id', $user->id)->get();
@@ -33,6 +54,25 @@ class ContentController extends Controller
             'uncompletedTasks' => $uncompletedTasks,
             'completionPercentage' => $completionPercentage,
             'moodData' => $moodData,
+            "jumlahCatatanPekerjaan" => $jumlahCatatanPekerjaan,
+            "jumlahCatatanPribadi" => $jumlahCatatanPribadi,
+            "jumlahCatatanPenting" => $jumlahCatatanPenting,
+            "jumlahCatatanBelajar" => $jumlahCatatanBelajar,
+            "jumlahCatatanProyek" => $jumlahCatatanProyek,
+            "jumlahCatatanLiburan" => $jumlahCatatanLiburan,
+            "jumlahCatatanRutinitas" => $jumlahCatatanRutinitas,
+            "jumlahCatatanKesehatan" => $jumlahCatatanKesehatan,
+            "jumlahCatatanHobi" => $jumlahCatatanHobi,
+            "jumlahCatatanTeknologi" => $jumlahCatatanTeknologi,
+            "jumlahCatatanOlahraga" => $jumlahCatatanOlahraga,
+            "jumlahCatatanKuliner" => $jumlahCatatanKuliner,
+            "jumlahCatatanSeni" => $jumlahCatatanSeni,
+            "jumlahCatatanTugasSekolah" => $jumlahCatatanTugasSekolah,
+            "jumlahCatatanTravel" => $jumlahCatatanTravel,
+            "jumlahCatatanMusik" => $jumlahCatatanMusik,
+            "jumlahCatatanFilm" => $jumlahCatatanFilm,
+            "jumlahCatatanBuku" => $jumlahCatatanBuku,
+            "jumlahCatatanOtomotif" => $jumlahCatatanOtomotif,
             "user" => $user
         ]);
     }
@@ -53,8 +93,6 @@ class ContentController extends Controller
 
     public function storeTodo(Request $request)
     {
-        // Validasi data yang dikirimkan dari formulir jika diperlukan
-
         $user = Auth::user(); // Mengambil pengguna yang sedang masuk
 
         $task = new Todo();
@@ -68,7 +106,6 @@ class ContentController extends Controller
 
         $task->save();
 
-        // Redirect atau tampilkan pesan sukses
         return redirect('/todo')->with('success', 'Task produk berhasil ditambahkan.');
     }
 
@@ -128,11 +165,117 @@ class ContentController extends Controller
         return redirect('/todo')->with('success', 'tugas berhasil dihapus.');
     }
 
-    public function music()
+    public function notes()
     {
-        return view('meditation.music', [
-            "title" => "Playlist"
+        $user = Auth::user();
+
+        $notes = Note::where('user_id', auth()->id())->paginate(5);
+
+        $jumlahCatatanPekerjaan = Note::where('category', 'Pekerjaan')->where('user_id', $user->id)->count();
+
+        return view('dashboard.notes', [
+            "title" => "Notes",
+            'notes' => $notes,
+            'user' => $user,
+            "jumlahCatatanPekerjaan" => $jumlahCatatanPekerjaan,
         ]);
+    }
+
+
+    public function create()
+    {
+        $user = Auth::user();
+
+        return view('dashboard.action.create', [
+            "title" => "Notes",
+            "user" => $user
+        ]); // 'notes.create' adalah nama tampilan yang akan Anda buat.
+    }
+
+    public function filterNotes(Request $request)
+    {
+        $user = Auth::user();
+        $category = $request->input('category');
+    
+        // Query catatan berdasarkan kategori yang dipilih
+        $query = Note::query();
+    
+        if ($category != "") {
+            $query->where('category', $category);
+        }
+    
+        $notes = $query->where('user_id', auth()->id())->paginate(5);
+    
+        return view('dashboard.notes', [
+            'title' => 'Notes',
+            'notes' => $notes,
+            "user" => $user
+        ]);
+    }    
+
+    public function editNote($id)
+    {
+        $note = Note::find($id);
+
+        return view('dashboard.action.edit', [
+            "title" => "Edit Note",
+            'note' => $note,
+        ]);
+    }
+
+    public function updateNote(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'category' => 'required',
+        ]);
+
+        $note = Note::find($id);
+        $note->title = $validatedData['title'];
+        $note->content = $validatedData['content'];
+        $note->category = $validatedData['category'];
+        $note->save();
+
+        return redirect('/notes')->with('success', 'Catatan berhasil diperbarui.');
+    }
+
+    public function storeNotes(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        // Create a new Note instance and save it to the database
+        $newNote = new Note();
+        $newNote->title = $validatedData['title'];
+        $newNote->content = $validatedData['content'];
+        $newNote->category = $request->input('category'); // Ambil nilai kategori dari input
+        // Assuming you're associating notes with the currently authenticated user.
+        $newNote->user_id = auth()->id();
+
+        $newNote->save();
+
+        return redirect('/notes')->with('success', 'Catatan berhasil disimpan.');
+    }
+
+    public function deleteNote($id)
+    {
+        $note = Note::find($id);
+
+        if ($note) {
+            // Pastikan catatan dimiliki oleh pengguna yang saat ini diautentikasi
+            if ($note->user_id === auth()->id()) {
+                $note->delete();
+                return redirect('/notes')->with('success', 'Catatan berhasil dihapus.');
+            } else {
+                return redirect('/notes')->with('error', 'Anda tidak memiliki izin untuk menghapus catatan ini.');
+            }
+        } else {
+            return redirect('/notes')->with('error', 'Catatan tidak ditemukan.');
+        }
     }
 
     public function timer()
@@ -152,6 +295,8 @@ class ContentController extends Controller
     public function mood()
     {
         // Array of random inspirational messages
+        $user = Auth::user();
+
         $inspirationalMessages = [
             "Kamu telah melakukan hal yang baik hari ini, selamat!",
             "Tetap Semangat!",
@@ -171,7 +316,8 @@ class ContentController extends Controller
         return view('meditation.moodtracker', [
             "title" => "Mood Tracker",
             "success" => 'Mood successfully stored.',
-            "randomMessage" => $randomMessage
+            "randomMessage" => $randomMessage,
+            "user" => $user
         ]);
     }
 

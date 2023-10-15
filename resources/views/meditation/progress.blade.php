@@ -1,62 +1,9 @@
 @extends('layouts.main')
-  {{-- <div class="container">
-    <div class="navbar bg-orange-700 text-white shadow-xl">
-      <div class="flex-1 pl-5">
-        <a class="btn btn-ghost normal-case text-xl">User Point <i class="fa-solid fa-star"></i></a>
-      </div>
-      <div class="flex-none">
-        <div class="dropdown dropdown-end pr-5">
-          <div class="flex items-stretch">
-            <a href="/" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-angle-left fa-rotate-180"></i>Back</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-  <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
-    <div class="flex-1 pl-5">
-      <a href="#" class="btn btn-ghost normal-case text-xl">User Point <i class="fa-solid fa-star"></i></a>
-    </div>
-    <div class="flex-none">
-      <div class="pr-5">
-        <div class="flex items-stretch">
-          <a href="/" class="btn btn-ghost rounded-btn">Beranda</a>
-          <div class="dropdown dropdown-end">
-            <!-- Dropdown "Produktivitas" -->
-            <label tabindex="0" class="btn btn-ghost">
-              <div class="rounded-btn">
-                <!-- Icon untuk dropdown "Produktivitas" -->
-                Produktivitas <i class="fa-solid fa-chevron-down"></i>
-              </div>
-            </label>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
-              <!-- Tautan untuk fitur-fitur -->
-              <li>
-                <a href="/video" class="justify-between">
-                  Video Meditasi
-                </a>
-              </li>
-              <li><a href="/mood">Mood Tracker</a></li>
-              <li>
-                <a href="/todo">
-                  To-Do List
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="dropdown dropdown-end mr-8">
-    </div>
-</div>
-  <h1 class="text-4xl m-10 font-semibold text-green-600 mt-36 text-center">Progress Anda</h1>
-  <div class="container flex justify-center items-center">
-    <div class="stats shadow text-center bg-white mb-12">
+ @include('partials.navbar')
+ <h1 class="text-4xl m-10 font-semibold text-green-600 mt-36 text-center">Progress <span class="underline">{{ $user->username }}</span></h1>
+<div class="container flex justify-center items-center">
+    <div class="stats shadow text-center bg-white mb-12 p-4 mx-auto border border-gray-300 rounded-md">
         <div class="stat">
-            <div class="stat-figure text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            </div>
             <div class="stat-title text-slate-800">Jumlah Task yang belum selesai</div>
             <div class="stat-value text-primary">
                 <!-- Tampilkan jumlah tugas yang belum selesai di sini -->
@@ -64,14 +11,10 @@
             </div>
         </div>
         <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            </div>
             <div class="mt-3 stat-value text-secondary">
                 <span class="">Jumlah task:</span>{{ $totalTasks }}
             </div>
         </div>
-
         <div class="stat">
             <div class="stat-figure text-secondary">
                 <div class="avatar online">
@@ -92,9 +35,173 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+
+  <div class="text-center mb-12 text-slate-950">
+    <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Isi Catatan <span class="underline">{{ $user->username }}</span></h2>
+    <div class="flex flex-wrap justify-center">
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-blue-500 rounded-full p-4 inline-block">
+                <i class="fas fa-briefcase text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-blue-500">{{ $jumlahCatatanPekerjaan }}</span> Catatan Pekerjaan
+            </p>
+        </div>
+        <!-- Tambahkan data dan gaya untuk kategori lainnya di sini -->
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-red-500 rounded-full p-4 inline-block">
+                <i class="fas fa-heart text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-red-500">{{ $jumlahCatatanPribadi }}</span> Catatan Pribadi
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-orange-500 rounded-full p-4 inline-block">
+                <i class="fas fa-exclamation-circle text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-orange-500">{{ $jumlahCatatanPenting }}</span> Catatan Penting
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-green-500 rounded-full p-4 inline-block">
+                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-green-500">{{ $jumlahCatatanBelajar }}</span> Catatan Belajar
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-purple-500 rounded-full p-4 inline-block">
+                <i class="fas fa-tools text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-purple-500">{{ $jumlahCatatanProyek }}</span> Catatan Proyek
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-indigo-500 rounded-full p-4 inline-block">
+                <i class="fas fa-suitcase-rolling text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-indigo-500">{{ $jumlahCatatanLiburan }}</span> Catatan Liburan
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-pink-500 rounded-full p-4 inline-block">
+                <i class="fas fa-clipboard-check text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-pink-500">{{ $jumlahCatatanRutinitas }}</span> Catatan Rutinitas
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-green-500 rounded-full p-4 inline-block">
+                <i class="fas fa-medkit text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-green-500">{{ $jumlahCatatanKesehatan }}</span> Catatan Kesehatan
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-yellow-500 rounded-full p-4 inline-block">
+                <i class="fas fa-bicycle text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-yellow-500">{{ $jumlahCatatanHobi }}</span> Catatan Hobi
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-teal-500 rounded-full p-4 inline-block">
+                <i class="fas fa-laptop-code text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-teal-500">{{ $jumlahCatatanTeknologi }}</span> Catatan Teknologi
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-blue-500 rounded-full p-4 inline-block">
+                <i class="fas fa-running text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-blue-500">{{ $jumlahCatatanOlahraga }}</span> Catatan Olahraga
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-red-500 rounded-full p-4 inline-block">
+                <i class="fas fa-utensils text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-red-500">{{ $jumlahCatatanKuliner }}</span> Catatan Kuliner
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-orange-500 rounded-full p-4 inline-block">
+                <i class="fas fa-paint-brush text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-orange-500">{{ $jumlahCatatanSeni }}</span> Catatan Seni
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-purple-500 rounded-full p-4 inline-block">
+                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-purple-500">{{ $jumlahCatatanTugasSekolah }}</span> Catatan Tugas Sekolah
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-cyan-500 rounded-full p-4 inline-block">
+                <i class="fas fa-plane-departure text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-cyan-500">{{ $jumlahCatatanTravel }}</span> Catatan Travel
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-pink-700 rounded-full p-4 inline-block">
+                <i class="fas fa-music text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-pink-700">{{ $jumlahCatatanMusik }}</span> Catatan Musik
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-fuchsia-400 rounded-full p-4 inline-block">
+                <i class="fas fa-film text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-fuchsia-400">{{ $jumlahCatatanFilm }}</span> Catatan Film
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-indigo-700 rounded-full p-4 inline-block">
+                <i class="fas fa-book text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-indigo-700">{{ $jumlahCatatanBuku }}</span> Catatan Buku
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-amber-950 rounded-full p-4 inline-block">
+                <i class="fas fa-car text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-amber-950">{{ $jumlahCatatanOtomotif }}</span> Catatan Otomotif
+            </p>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
   <div class="text-center mb-32 text-slate-950">
-    <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Analisis Mood Anda</h2>
+    <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Analisis Mood <span class="underline">{{ $user->username }}</span></h2>
     @if (count($moodData) > 0)
         <p class="text-xl">
             @php
@@ -139,15 +246,15 @@
 
         <p class="text-xl mt-8">
           @if ($sadMoods > $happyMoods && $sadMoods > $goodMoods && $sadMoods > $neutralMoods && $sadMoods > $badMoods)
-              {{ $user->username }}, Sepertinya Anda sering merasa sedih. Apakah semuanya baik-baik saja?
+          <span class="underline">{{ $user->username }}</span>, Sepertinya Anda sering merasa sedih. Apakah semuanya baik-baik saja?
           @elseif ($goodMoods > $sadMoods && $goodMoods > $happyMoods && $goodMoods > $neutralMoods && $goodMoods > $badMoods)
-              Hai, {{ $user->username }}! Anda tampaknya dalam suasana hati yang baik sebagian besar waktu. Pertahankan!
+              Hai, <span class="underline">{{ $user->username }}</span>! Anda tampaknya dalam suasana hati yang baik sebagian besar waktu. Pertahankan!
           @elseif ($neutralMoods > $sadMoods && $neutralMoods > $happyMoods && $neutralMoods > $goodMoods && $neutralMoods > $badMoods)
               {{ $user->username }}, Mood Anda cenderung biasa. Ini adalah bagian normal dari kehidupan.
           @elseif ($badMoods > $sadMoods && $badMoods > $happyMoods && $badMoods > $goodMoods && $badMoods > $neutralMoods)
-              Tampaknya {{ $user->username }} mengalami beberapa mood buruk. Apakah ada yang bisa kami lakukan untuk membantu?
+              Tampaknya <span class="underline"><span class="underline">{{ $user->username }}</span></span> mengalami beberapa mood buruk. Apakah ada yang bisa kami lakukan untuk membantu?
           @else
-              Hai, {{ $user->username }}! Mood Anda tampaknya bervariasi. Ini adalah bagian normal dari kehidupan.
+              Hai, <span class="underline">{{ $user->username }}</span>! Mood Anda tampaknya bervariasi. Ini adalah bagian normal dari kehidupan.
           @endif
       </p>      
     @else

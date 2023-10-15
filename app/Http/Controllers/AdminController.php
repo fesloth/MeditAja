@@ -54,7 +54,6 @@ class AdminController extends Controller
         // Mengambil data transaksi untuk pengguna tertentu
         $transactions = Transaksi::where('user_id', $userId)->get();
 
-        // Selanjutnya, Anda dapat menggunakan data transaksi ini untuk menampilkan informasi kepada pengguna
     }
 
     public function deleteTransaction($transactionId)
@@ -69,7 +68,5 @@ class AdminController extends Controller
 
         // Hapus transaksi dari database
         $transaksi->delete();
-
-        // Selanjutnya, Anda dapat melakukan apa pun sesuai kebutuhan aplikasi Anda
     }
 }

@@ -27,9 +27,15 @@ Route::get('/', function () {
 
 Route::middleware(['web'])->group(function () {
     Route::get('/', [MainController::class, 'index']);
-    Route::get('/music', [MainController::class, 'music'])->middleware('auth');
-    
-    
+
+    Route::get('/notes', [ContentController::class, 'notes'])->middleware('auth'); 
+    Route::get('/notes/create', [ContentController::class, 'create'])->name('create.note')->middleware('auth'); 
+    Route::post('/notes', [ContentController::class, 'storeNotes'])->name('notes.store')->middleware('auth');
+    Route::get('/notes/edit/{id}', [ContentController::class, 'editNote'])->name('edit.note')->middleware('auth');
+    Route::put('/notes/update/{id}', [ContentController::class, 'updateNote'])->name('update.note')->middleware('auth');
+    Route::get('/notesFilter', [ContentController::class, 'filterNotes'])->name('notes.filter')->middleware('auth'); 
+    Route::get('/notes/delete/{id}', [ContentController::class, 'deleteNote'])->name('delete.note')->middleware('auth');
+
     Route::get('/timer', [ContentController::class, 'timer'])->middleware('auth');
     Route::get('/video', [ContentController::class, 'video'])->middleware('auth');
     Route::get('/mood', [ContentController::class, 'mood'])->middleware('auth');

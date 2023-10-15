@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Dekko&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="path/to/node_modules/sweetalert2/dist/sweetalert2.min.css">
   @vite('resources/css/app.css')
 </head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.24"></script>
 <body class="font-bal">
-  <script src="path/to/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body> 
 </html>

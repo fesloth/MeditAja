@@ -43,14 +43,14 @@
           <h1 class="text-2xl  text-slate-800 font-bold text-center">Tingkatkan Produktifitasmu!</h1>
           <hr class="my-4 border border-gray-400">
           <div class="button mt-8">
-          <a href="/createTodo" class="bg-[6EA066] text-white px-5 py-2 rounded-lg hover:bg-[91D086] inline-block">Add Task</a>
+          <a href="/createTodo" class="bg-[93CE89] text-white px-5 py-2 rounded-lg hover:bg-[91D086] inline-block">Add Task</a>
           <!-- Tautan untuk Timer (Di sebelah kanan) -->
-          <a href="/timer" class="float-right mt-2 bg-[6EA066] hover:bg-[91D086] text-white px-7 py-2 rounded-lg ">
+          <a href="/timer" class="float-right mt-2 bg-[93CE89] hover:bg-[91D086] text-white px-7 py-2 rounded-lg ">
             Timer
           </a>
         </div>
         <table class="border-collapse border border-slate-950 w-full table-auto mt-9">
-          <thead class="bg-[4B8A08] text-white">
+          <thead class="bg-[76AA6E] text-white">
               <tr class="border-collapse border border-slate-950">
                   <th class="px-4 py-2 border border-slate-950">Priority</th>
                   <th class="px-4 py-2 border border-slate-950">Description</th>
