@@ -355,4 +355,15 @@ class ContentController extends Controller
 
         return redirect('/mood')->with('success', 'Mood successfully stored.')->with('randomMessage', $randomMessage);
     }
+
+    public function kalk()
+    {
+        $user = Auth::user();
+        
+        return view ('premium.kalkulator', [
+            "title" => "Kalkulator Kesehatan",
+            "calculator" => true,
+            "user" => $user
+        ]);
+    }
 }

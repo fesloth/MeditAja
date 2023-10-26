@@ -106,7 +106,7 @@
     </div>
     <!-- Tombol Edit User -->
     <h3 class="mb-5 text-slate-950">Username: {{ $user->username }} </h3>
-    <a href="/edit" class="bg-[6EA066] text-white px-4 py-2 cursor-pointer rounded-lg hover:bg-lime-700 mb-28">Edit Username</a>
+    <a href="/edit" class="bg-[6EA066] text-white px-4 py-2 cursor-pointer rounded-lg hover:bg-[91D086] mb-28">Edit Username</a>
 </div>
 
 @include('partials.footer')

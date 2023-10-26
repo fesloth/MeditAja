@@ -13,16 +13,16 @@
         </div>
         <div class="mb-4">
             <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username Baru</label>
-            <input type="text" id="new_username" name="new_username" class="w-full text-slate-800 px-3 py-2 border rounded-lg focus:outline-none bg-white focus:ring focus:border-orange-500">
+            <input type="text" id="new_username" name="new_username" class="w-full text-slate-800 px-3 py-2 border rounded-lg focus:outline-none bg-white focus:ring focus:border-orange-500" required>
         </div>
         <!-- Edit Gambar Profil -->
         <div class="mb-4">
             <label for="profileImage" class="block text-gray-700 text-sm font-bold mb-2">Gambar Profil</label>
-            <input type="file" name="profile_image" class="file-input file-input-bordered file-input-md w-full text-slate-800 bg-white" />
+            <input type="file" name="profile_image" class="file-input file-input-bordered file-input-md file-input-success w-full text-slate-800 bg-white" />
         </div>
         <!-- Tombol Simpan -->
         <div class="text-center mb-3">
-            <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg hover:bg-lime-600">Simpan</button>
+            <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg hover:bg-[91D086]">Simpan</button>
         </div>
         <!-- Tombol Back dengan Font Awesome -->
         <a href="/profile" class="mt-4 text-lime-500 hover:text-lime-600">

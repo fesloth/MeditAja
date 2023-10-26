@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Relaksasi</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f2e3ff; /* Warna latar belakang ungu pastel */
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #ffffff; /* Warna latar belakang putih */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #7745ff; /* Warna tombol ungu */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #6b3de8; /* Warna tombol ungu yang lebih gelap saat hover */
+      }
+
+      #result {
+        display: none;
+        margin-top: 20px;
+      }
+
+      #result h3 {
+        color: #7745ff; /* Warna teks ungu */
+      }
+
+      #result p {
+        color: #333; /* Warna teks hitam */
+      }
+
+      #breathCount {
+        color: #7745ff; /* Warna teks ungu */
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Kalkulator Relaksasi</h2>
+      <form id="relaxation-calculator">
+        <label for="exercise-type">Jenis Latihan:</label>
+        <select id="exercise-type" name="exercise-type">
+          <option value="meditasi">Meditasi</option>
+          <option value="pernapasan">Pernapasan Dalam</option>
+        </select>
+
+        <label for="duration">Durasi (menit):</label>
+        <input
+          type="number"
+          id="duration"
+          name="duration"
+          min="1"
+          required
+        />
+
+        <button type="submit">Mulai</button>
+      </form>
+
+      <div id="result">
+        <h3>Silakan mulai latihan Anda.</h3>
+        <p>Waktu tersisa: <span id="countdown">00:00</span></p>
+      </div>
+    </div>
+
+    <div>
+      <h3>Penghitung Napas</h3>
+      <p>Total Napas: <span id="breathCount">0</span></p>
+      <button onclick="countBreaths()">Mulai Hitung Napas</button>
+    </div>
+
+    <script>
+      const calculatorForm = document.getElementById("relaxation-calculator");
+      const resultDiv = document.getElementById("result");
+      const countdownSpan = document.getElementById("countdown");
+      let countdownInterval;
+
+      calculatorForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const exerciseType = calculatorForm.elements["exercise-type"].value;
+        const duration = parseInt(calculatorForm.elements["duration"].value, 10);
+
+        startExercise(exerciseType, duration);
+      });
+
+      function startExercise(exerciseType, duration) {
+        resultDiv.style.display = "block";
+        calculatorForm.style.display = "none";
+
+        let remainingTime = duration * 60;
+        updateCountdown(remainingTime);
+
+        countdownInterval = setInterval(function () {
+          remainingTime--;
+          updateCountdown(remainingTime);
+
+          if (remainingTime <= 0) {
+            clearInterval(countdownInterval);
+            resultDiv.innerHTML = "<h3>Latihan selesai!</h3>";
+          }
+        }, 1000);
+      }
+
+      function updateCountdown(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        countdownSpan.textContent = `${String(minutes).padStart(2, "0")}:${String(
+          remainingSeconds
+        ).padStart(2, "0")}`;
+      }
+
+      var breathCount = 0;
+
+      function countBreaths() {
+        breathCount++;
+        document.getElementById("breathCount").textContent = breathCount;
+      }
+    </script>
+  </body>
+</html>

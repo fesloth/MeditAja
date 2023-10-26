@@ -41,6 +41,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/mood', [ContentController::class, 'mood'])->middleware('auth');
     Route::post('/moodStore', [ContentController::class, 'store'])->name('mood.store')->middleware('auth');
     Route::get('/progress', [ContentController::class, 'index'])->middleware('auth');
+    Route::get('/kalk', [ContentController::class, 'kalk'])->middleware('auth');
     
     Route::get('/todo', [ContentController::class, 'todo'])->middleware('auth');
     Route::get('/createTodo', [ContentController::class, 'createTodo'])->middleware('auth');

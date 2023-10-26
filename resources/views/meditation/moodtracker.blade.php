@@ -68,7 +68,7 @@
             <label for="description">Deskripsi</label>
             <textarea name="description" id="description" class="w-full p-4 bg-white text-slate-600 border rounded-lg resize-y" placeholder="Tulis keluhan Anda di sini..."></textarea>
         </div>
-        <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg mt-4 hover:bg-green-700">Kirim</button>
+        <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg mt-4 hover:bg-[91D086]">Kirim</button>
     </form>
 </div>
 <script>

@@ -61,7 +61,7 @@
             <h2 class="card-title">{{ $paketPremium->nama_paket }}</h2>
             <p>Rp. {{ number_format($paketPremium->harga) }}.-</p>
             <div class="card-actions">
-                <button class="btn bg-[6EA066] border-none text-slate-900 hover:bg-lime-600">
+                <button class="btn bg-[6EA066] border-none text-slate-900 hover:bg-[CFFFC7]">
                   <a href="{{ url('/checkout', ['harga' => $paketPremium->harga]) }}">Buy Now</a>
                 </button>
             </div>

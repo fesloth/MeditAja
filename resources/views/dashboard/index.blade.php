@@ -41,7 +41,7 @@
   </div>
 </section>
 
-<section class="content-container mx-52 mt-10">
+{{-- <section class="content-container mx-52 mt-10">
   <div class="content-flex flex items-center text-center">
     <div class="content-text flex-1">
       <h1 class="text-4xl font-semibold text-[#2d334a] mb-2">Apa yang terjadi hari ini?</h1>
@@ -74,7 +74,6 @@
   </div>
 
 <!-- Card 3 -->
-<!-- Card 3 -->
 <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
   <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
   <div class="card-body items-center text-[#2d334a] text-center m-10" >
@@ -85,7 +84,144 @@
   </div>
 </div>
 
+</div> --}}
 
+<section class="content-container mx-20 mt-10">
+  <div class="content-flex flex items-center text-center">
+    <div class="content-text flex-1">
+      <h1 class="text-4xl font-semibold text-[#2d334a] mb-2">Apa yang terjadi hari ini?</h1>
+      <p class="text-lg text-[#2d334a] mb-4">Tuangkan masalahmu dan hilangkan rasa lelah dengan fitur-fitur di MeditAja!</p>
+    </div>
+  </div>
+</section>
+
+<div class="cards-container flex mx-40 mb-36 transition-transform duration-500 ease-in-out">
+  <button id="prevBtn" class="text-4xl text-[#2d334a] px-4">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <!-- Card 1 -->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/busy2.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Apa saja kesibukan anda nanti?</h2>
+      <div class="card-actions">
+        <a href="/notes" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Buat Plan</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/progress.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Lihat Grafik Progressmu</h2>
+      <div class="card-actions">
+        <a href="/progress" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Lihat Progress Anda</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Catat masalah Anda di Mood Tracker!</h2>
+      <div class="card-actions">
+        <a href="/mood" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Tulis Keluhanmu</a>
+      </div>
+    </div>
+    
+  </div>
+  <!-- Card 4 -->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Kalkulator Relaksasi untuk Meditasi</h2>
+      <div class="card-actions">
+        <a href="/kalk" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Coba Kalkulator</a>
+      </div>
+    </div>
+  </div>
+  <!-- Card 5-->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Coba game zaman dulu di MeditAja</h2>
+      <div class="card-actions">
+        <a href="/card4" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Ayo Bermain</a>
+      </div>
+    </div>
+  </div>
+  <!-- Card 6 -->
+  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <div class="card-body items-center text-[#2d334a] text-center m-10">
+      <h2 class="card-title">Interaksi dengan Bot MeditAja</h2>
+      <div class="card-actions">
+        <a href="/card4" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">SOON</a>
+      </div>
+    </div>
+  </div>
+  <button id="nextBtn" class="text-4xl text-[#2d334a] px-4">
+    <i class="fas fa-chevron-right"></i>
+  </button>
 </div>
+
+<!-- JS Code -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    const cardContainer = document.querySelector('.cards-container');
+    let currentCardIndex = 0;
+    const cardWidth = 108; // Adjust this value based on your card width
+
+      cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          // Toggle active class on the clicked card
+          card.classList.toggle('active');
+        });
+
+        // Initially, hide cards 1 to 3, show card 4
+        if (index >= 3) {
+          card.style.display = 'none';
+        }
+      });
+
+      // Function to navigate to the next set of cards
+      // Function to navigate to the next set of cards
+      const navigateCards = (direction) => {
+        const numCards = cards.length;
+
+        if (direction === 'next') {
+          currentCardIndex += 3;
+          if (currentCardIndex >= numCards) {
+            currentCardIndex = 0; // Kembali ke awal jika sudah mencapai akhir
+          }
+        } else if (direction === 'prev') {
+          currentCardIndex -= 3;
+          if (currentCardIndex < 0) {
+            currentCardIndex = numCards - 3; // Kembali ke akhir jika sudah di awal
+          }
+        }
+
+        cards.forEach((card, index) => {
+          if (index >= currentCardIndex && index < currentCardIndex + 3) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Scroll the card container to the selected cards
+        cardContainer.scrollLeft = currentCardIndex * cardWidth;
+        };
+
+        // Add event listeners to navigate between card sets
+        document.getElementById('nextBtn').addEventListener('click', () => navigateCards('next'));
+        document.getElementById('prevBtn').addEventListener('click', () => navigateCards('prev'));
+  });
+  </script>
+
+
 
 @include('partials.footer')
