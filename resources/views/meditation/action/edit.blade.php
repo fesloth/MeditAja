@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="mb-4 flex justify-center items-center">
-                    <button class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600" name="submit" type="submit">Update Task</button>
+                    <button class="bg-[6EA066] text-white px-4 py-2 rounded hover:bg-[91D086]" name="submit" type="submit">Update Task</button>
                 </div>
             </form>
             @if (session('success'))
@@ -34,7 +34,7 @@
             window.location.href = '/todo';
         </script>
         @endif
-            <a href="/todo" id="button" class="text-orange-500"><i class="fas fa-arrow-left mr-2"></i>Back</a>
+            <a href="/todo" id="button" class="text-[6EA066]"><i class="fas fa-arrow-left mr-2"></i>Back</a>
         </div>
     </div>
 </div>

@@ -96,6 +96,7 @@
           if (remainingTime <= 0) {
             clearInterval(countdownInterval);
             resultDiv.innerHTML = "<h3 class='text-purple-500 text-xl'>Latihan selesai!</h3>";
+            resultDiv.innerHTML += "<button onclick='resetExercise()' class='w-full mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300'>Ulang Relaksasi</button>";
           }
         }, 1000);
       }
@@ -118,5 +119,12 @@
       function resetBreaths() {
         breathCount = 0;
         document.getElementById("breathCount").textContent = breathCount;
+      }
+
+      function resetExercise() {
+        resultDiv.style.display = "none";
+        calculatorForm.style.display = "block";
+        calculatorForm.reset();
+        clearInterval(countdownInterval);
       }
     </script>

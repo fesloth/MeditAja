@@ -41,7 +41,16 @@ Route::middleware(['web'])->group(function () {
     Route::get('/mood', [ContentController::class, 'mood'])->middleware('auth');
     Route::post('/moodStore', [ContentController::class, 'store'])->name('mood.store')->middleware('auth');
     Route::get('/progress', [ContentController::class, 'index'])->middleware('auth');
+    
     Route::get('/kalk', [ContentController::class, 'kalk'])->middleware('auth');
+    Route::get('/pesan', [ContentController::class, 'pesan'])->middleware('auth');
+
+    Route::get('/jurnal', [ContentController::class, 'jurnal'])->middleware('auth')->name('jurnal');
+    Route::get('/jurnalCreate', [ContentController::class, 'createJurnal'])->middleware('auth')->name('jurnal.create');
+    Route::post('/jurnalStore', [ContentController::class, 'storeJurnal'])->name('jurnal.store');
+    Route::get('/jurnal/{id}/edit', [ContentController::class, 'editJurnal'])->name('jurnal.edit');
+    Route::put('/jurnal/{id}', [ContentController::class, 'updateJurnal'])->name('jurnal.update');
+    Route::delete('/jurnal/{id}', [ContentController::class, 'destroy'])->name('jurnal.destroy');
     
     Route::get('/todo', [ContentController::class, 'todo'])->middleware('auth');
     Route::get('/createTodo', [ContentController::class, 'createTodo'])->middleware('auth');

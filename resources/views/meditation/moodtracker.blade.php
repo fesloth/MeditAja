@@ -44,7 +44,7 @@
       <div class="fixed inset-0 flex items-center justify-center">
         <div class="bg-gray-800 bg-opacity-50 w-full h-full absolute" id="alertBackdrop"></div>
           <div class="bg-[91D086] text-black p-4 rounded-lg shadow-md z-10" id="alert" style="display: none;">
-            <p class="text-2xl px-16 font-semibold mb-4 mt-16">Hai {{ $user->username }}! <br> Ada pesan nih dari MeditAja</p>
+            <p class="text-2xl px-16 font-semibold mb-4 mt-16">Hai {{ $user->username }}! <i class="fa-regular fa-hand"></i> <br> Ada pesan nih dari MeditAja</p>
               <p class="italic px-16" id="alertMessage"></p>
               <button id="closeAlert" class="bg-gray-300 hover:bg-gray-400 text-black px-5 py-3 rounded-lg mt-4 mb-14">Tutup</button>
           </div>

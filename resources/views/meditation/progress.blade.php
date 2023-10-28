@@ -37,7 +37,7 @@
     </div>
 </div>
 
-  <div class="text-center mb-12 text-slate-950">
+  <div class="text-center mb-16 text-slate-950">
     <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Isi Catatan <span class="underline">{{ $user->username }}</span></h2>
     <div class="flex flex-wrap justify-center">
         <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
@@ -191,6 +191,14 @@
             </div>
             <p class="text-xl mt-4">
                 <span class="font-semibold text-amber-950">{{ $jumlahCatatanOtomotif }}</span> Catatan Otomotif
+            </p>
+        </div>
+        <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
+            <div class="bg-slate-500 rounded-full p-4 inline-block">
+                <i class="fas fa-cat text-white text-2xl"></i>
+            </div>
+            <p class="text-xl mt-4">
+                <span class="font-semibold text-slate-500">{{ $jumlahCatatanLainnya }}</span> Catatan Lainnya
             </p>
         </div>
         

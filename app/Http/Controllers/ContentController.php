@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MeditationJournal;
+use App\Models\Event;
 use App\Models\Mood;
+use App\Models\MorningMessage;
 use App\Models\Note;
 use App\Models\Todo;
 use Illuminate\Http\Request;
@@ -36,6 +39,7 @@ class ContentController extends Controller
         $jumlahCatatanFilm = Note::where('category', 'Film')->where('user_id', $user->id)->count();
         $jumlahCatatanBuku = Note::where('category', 'Buku')->where('user_id', $user->id)->count();
         $jumlahCatatanOtomotif = Note::where('category', 'Otomotif')->where('user_id', $user->id)->count();
+        $jumlahCatatanLainnya = Note::where('category', 'Lainnya')->where('user_id', $user->id)->count();
 
         // Menghitung statistik hanya untuk tugas milik pengguna yang saat ini masuk
         $task = Todo::where('user_id', $user->id)->get();
@@ -73,6 +77,7 @@ class ContentController extends Controller
             "jumlahCatatanFilm" => $jumlahCatatanFilm,
             "jumlahCatatanBuku" => $jumlahCatatanBuku,
             "jumlahCatatanOtomotif" => $jumlahCatatanOtomotif,
+            "jumlahCatatanLainnya" => $jumlahCatatanLainnya,
             "user" => $user
         ]);
     }
@@ -165,6 +170,106 @@ class ContentController extends Controller
         return redirect('/todo')->with('success', 'tugas berhasil dihapus.');
     }
 
+    public function kalender(Request $request)
+    {
+        $user = Auth::user();
+        $tasks = Todo::all();
+
+        if ($request->ajax()) {
+
+            $data = Event::whereDate('start', '>=', $request->start)
+                ->whereDate('end',   '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
+            return response()->json($data);
+        }
+
+        return view('dashboard.kalender', [
+            'title' => 'Kalender Kegiatan',
+            'tasks' => $tasks,
+            'user' => $user,
+        ]);
+    }
+
+    public function jurnal()
+    {
+        $user = Auth::user();
+    
+        $journals = MeditationJournal::where('user_id', auth()->user()->id)->paginate(4);
+        
+        return view('meditation.jurnal', [
+            'journals' => $journals,
+            'title' => 'jurnal',
+            'user' => $user,
+        ]);
+    }    
+
+    public function createJurnal()
+    {
+        $user = Auth::user();
+
+        return view('meditation.action.jurnalCreate', [
+            'title' => 'Tambah Jurnal',
+            'user' => $user,
+        ]);
+    }
+
+    public function storeJurnal(Request $request)
+    {
+        $validatedData = $request->validate([
+            'date' => 'required|date',
+            'entry' => 'required',
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id; 
+        MeditationJournal::create($validatedData);  
+
+        return redirect()->route('jurnal');
+    }
+
+    public function editJurnal($id)
+    {
+        $user = Auth::user();
+
+        $journal = MeditationJournal::findOrFail($id);
+        return view('meditation.action.jurnalEdit', [
+            'journal' => $journal,
+            'title' => 'Edit Jurnal',
+            'user' => $user,
+        ]);
+    }
+
+    public function updateJurnal(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'date' => 'required|date',
+            'entry' => 'required',
+        ]);
+
+        $journal = MeditationJournal::findOrFail($id);
+        $journal->update($validatedData);
+
+        return redirect()->route('jurnal');
+    }
+
+    public function destroy($id)
+    {
+        // Temukan catatan meditasi berdasarkan ID
+        $journal = MeditationJournal::find($id);
+    
+        if ($journal) {
+            // Pastikan catatan dimiliki oleh pengguna yang saat ini diautentikasi
+            if ($journal->user_id === auth()->id()) {
+                $journal->delete();
+                return redirect()->route('jurnal')->with('success', 'Catatan berhasil dihapus.');
+            } else {
+                return redirect()->route('jurnal')->with('error', 'Anda tidak memiliki izin untuk menghapus catatan ini.');
+            }
+        } else {
+            return redirect()->route('jurnal')->with('error', 'Catatan tidak ditemukan.');
+        }
+    }    
+
     public function notes()
     {
         $user = Auth::user();
@@ -196,22 +301,22 @@ class ContentController extends Controller
     {
         $user = Auth::user();
         $category = $request->input('category');
-    
+
         // Query catatan berdasarkan kategori yang dipilih
         $query = Note::query();
-    
+
         if ($category != "") {
             $query->where('category', $category);
         }
-    
+
         $notes = $query->where('user_id', auth()->id())->paginate(5);
-    
+
         return view('dashboard.notes', [
             'title' => 'Notes',
             'notes' => $notes,
             "user" => $user
         ]);
-    }    
+    }
 
     public function editNote($id)
     {
@@ -298,16 +403,21 @@ class ContentController extends Controller
         $user = Auth::user();
 
         $inspirationalMessages = [
-            "Kamu telah melakukan hal yang baik hari ini, selamat!",
-            "Tetap Semangat!",
-            "Setiap hari adalah peluang baru.",
-            "Semangat! Ayo tersenyum untuk hari ini!",
-            "Bersyukur selalu membuat hari menjadi lebih baik.",
-            "Ketika hidup memberimu alasan untuk menyerah, berikan alasan untuk tetap melangkah.",
-            "Keberhasilan dimulai dengan langkah pertama. Lakukan sekarang!",
-            "Hari ini adalah hari yang bagus untuk menciptakan masa depan yang cerah.",
-            "Setiap masalah memiliki solusi. Terus berpikir positif!",
-            "Saat kita bersyukur, hidup menjadi lebih indah.",
+            "Kesehatan mentalmu adalah harta yang berharga. Rawatlah dengan baik!",
+            "Jangan ragu untuk mencari dukungan jika merasa terbebani. Kamu tidak sendirian.",
+            "Keadaan sulit adalah peluang untuk tumbuh lebih kuat.",
+            "Selalu prioritaskan kesehatan mentalmu.",
+            "Hidup lebih indah ketika kita merawat diri sendiri.",
+            "Berbicaralah dengan seseorang yang peduli jika merasa cemas atau stres.",
+            "Kesehatan mental yang baik adalah kuncinya. Semangat!",
+            "Jangan lupakan dirimu sendiri saat merawat orang lain. Ingatlah untuk beristirahat.",
+            "Cobalah teknik relaksasi seperti meditasi untuk menjaga kesehatan mentalmu.",
+            "Teruslah berjuang, kamu lebih kuat daripada yang kamu pikirkan.",
+            "Terkadang, menangis adalah cara tubuhmu mengatakan bahwa kamu perlu merelaksasikan diri.",
+            "Meraih keseimbangan dalam hidup adalah kunci untuk menjaga kesehatan mental yang baik.",
+            "Temukan kebahagiaan dalam hal-hal kecil, ini bisa menjadi obat untuk pikiran yang terlalu sibuk.",
+            "Jika kamu merasa hancur, ingat bahwa setiap pecahan dapat membentuk sesuatu yang lebih indah",
+            "Jadilah pemberi inspirasi bagi dirimu sendiri dan orang lain dalam perjalanan menuju kesehatan mental yang lebih baik."
         ];
 
         // Get a random message from the array
@@ -338,16 +448,21 @@ class ContentController extends Controller
 
         // Array of random inspirational messages
         $inspirationalMessages = [
-            "Kamu telah melakukan hal yang baik hari ini, selamat!",
-            "Tetap Semangat!",
-            "Setiap hari adalah peluang baru.",
-            "Semangat! Ayo tersenyum untuk hari ini!",
-            "Bersyukur selalu membuat hari menjadi lebih baik.",
-            "Ketika hidup memberimu alasan untuk menyerah, berikan alasan untuk tetap melangkah.",
-            "Keberhasilan dimulai dengan langkah pertama. Lakukan sekarang!",
-            "Hari ini adalah hari yang bagus untuk menciptakan masa depan yang cerah.",
-            "Setiap masalah memiliki solusi. Terus berpikir positif!",
-            "Saat kita bersyukur, hidup menjadi lebih indah.",
+            "Kesehatan mentalmu adalah harta yang berharga. Rawatlah dengan baik!",
+            "Jangan ragu untuk mencari dukungan jika merasa terbebani. Kamu tidak sendirian.",
+            "Keadaan sulit adalah peluang untuk tumbuh lebih kuat.",
+            "Selalu prioritaskan kesehatan mentalmu.",
+            "Hidup lebih indah ketika kita merawat diri sendiri.",
+            "Berbicaralah dengan seseorang yang peduli jika merasa cemas atau stres.",
+            "Kesehatan mental yang baik adalah kuncinya. Semangat!",
+            "Jangan lupakan dirimu sendiri saat merawat orang lain. Ingatlah untuk beristirahat.",
+            "Cobalah teknik relaksasi seperti meditasi untuk menjaga kesehatan mentalmu.",
+            "Teruslah berjuang, kamu lebih kuat daripada yang kamu pikirkan.",
+            "Terkadang, menangis adalah cara tubuhmu mengatakan bahwa kamu perlu merelaksasikan diri.",
+            "Meraih keseimbangan dalam hidup adalah kunci untuk menjaga kesehatan mental yang baik.",
+            "Temukan kebahagiaan dalam hal-hal kecil, ini bisa menjadi obat untuk pikiran yang terlalu sibuk.",
+            "Jika kamu merasa hancur, ingat bahwa setiap pecahan dapat membentuk sesuatu yang lebih indah",
+            "Jadilah pemberi inspirasi bagi dirimu sendiri dan orang lain dalam perjalanan menuju kesehatan mental yang lebih baik."
         ];
 
         // Get a random message from the array
@@ -359,11 +474,24 @@ class ContentController extends Controller
     public function kalk()
     {
         $user = Auth::user();
-        
-        return view ('premium.kalkulator', [
+
+        return view('premium.kalkulator', [
             "title" => "Kalkulator Kesehatan",
             "calculator" => true,
             "user" => $user
         ]);
+    }
+
+    public function pesan()
+    {
+        $user = Auth::user();
+
+        $messages = MorningMessage::all(); 
+        return view('premium.pesan', [
+            "title" => "Kalkulator Kesehatan",
+            "calculator" => true,
+            "user" => $user,
+            "messages" => $messages
+        ]); 
     }
 }

@@ -15,6 +15,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "flatpickr": "^4.6.13",
+        "fullcalendar": "^6.1.9",
         "sweetalert2": "^11.7.32"
     }
 }

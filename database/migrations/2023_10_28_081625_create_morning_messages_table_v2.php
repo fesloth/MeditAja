@@ -9,16 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('notes', function (Blueprint $table) {
+        Schema::create('morning_messages_table_v2', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->text('content');
-            $table->text('category_id')->nullable();
-            $table->unsignedBigInteger('user_id'); 
-            $table->text('category');
-            $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('morning_messages_table_v2');
     }
 };

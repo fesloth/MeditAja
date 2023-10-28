@@ -103,7 +103,7 @@
   <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
     <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/busy2.jpg') }}">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Apa saja kesibukan anda nanti?</h2>
+      <h2 class="card-title">Apa saja kesibukan Anda nanti?</h2>
       <div class="card-actions">
         <a href="/notes" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Buat Plan</a>
       </div>
@@ -114,7 +114,7 @@
   <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
     <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/progress.jpg') }}">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Lihat Grafik Progressmu</h2>
+      <h2 class="card-title">Lihat Grafik Progress Anda</h2>
       <div class="card-actions">
         <a href="/progress" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Lihat Progress Anda</a>
       </div>
@@ -127,38 +127,38 @@
     <div class="card-body items-center text-[#2d334a] text-center m-10">
       <h2 class="card-title">Catat masalah Anda di Mood Tracker!</h2>
       <div class="card-actions">
-        <a href="/mood" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Tulis Keluhanmu</a>
+        <a href="/mood" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Tulis Keluhan Anda</a>
       </div>
     </div>
     
   </div>
   <!-- Card 4 -->
   <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/medit.jpg') }}">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Kalkulator Relaksasi untuk Meditasi</h2>
+      <h2 class="card-title">Kontrol nafas dan hitung meditasi</h2>
       <div class="card-actions">
-        <a href="/kalk" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Coba Kalkulator</a>
+        <a href="/kalk" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Kalkulator Relaksasi</a>
       </div>
     </div>
   </div>
   <!-- Card 5-->
   <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/pesan.jpg') }}">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Coba game zaman dulu di MeditAja</h2>
+      <h2 class="card-title">Apakah pagi Anda menyenangkan?</h2>
       <div class="card-actions">
-        <a href="/card4" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Ayo Bermain</a>
+        <a href="/pesan" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Lihat Pesan</a>
       </div>
     </div>
   </div>
   <!-- Card 6 -->
   <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
+    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/jurnal.jpg') }}">
     <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Interaksi dengan Bot MeditAja</h2>
+      <h2 class="card-title">Tulis pengalaman Meditasi Anda</h2>
       <div class="card-actions">
-        <a href="/card4" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">SOON</a>
+        <a href="/jurnal" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086]">Tulis Jurnal</a>
       </div>
     </div>
   </div>
