@@ -41,51 +41,6 @@
   </div>
 </section>
 
-{{-- <section class="content-container mx-52 mt-10">
-  <div class="content-flex flex items-center text-center">
-    <div class="content-text flex-1">
-      <h1 class="text-4xl font-semibold text-[#2d334a] mb-2">Apa yang terjadi hari ini?</h1>
-      <p class="text-lg text-[#2d334a] mb-4">Tuangkan masalahmu</p>
-    </div>
-  </div>
-</section>
-
-<div class="cards-container flex mx-52 mb-36" >
-  <!-- Card 1 -->
-  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/busy2.jpg') }}">
-    <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Apa saja kesibukan anda nanti?</h2>
-      <div class="card-actions">
-        <a href="/notes" class="btn bg-[6EA066] border-none text-white hover:bg-lime-800">Buat Plan</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-    <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/progress.jpg') }}">
-    <div class="card-body items-center text-[#2d334a] text-center m-10">
-      <h2 class="card-title">Lihat Grafik Progressmu</h2>
-      <div class="card-actions">
-        <a href="/progress" class="btn bg-[6EA066] border-none text-white hover:bg-lime-800">Lihat Progress Anda</a>
-      </div>
-    </div>
-  </div>
-
-<!-- Card 3 -->
-<div class="card w-96 bg-[CFFFC7] mx-4 shadow-xl hover:shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105">
-  <img class="rounded-tl-md rounded-tr-md" src="{{ asset('img/write.jpg') }}">
-  <div class="card-body items-center text-[#2d334a] text-center m-10" >
-    <h2 class="card-title">Catat masalah Anda di Mood Tracker!</h2>
-    <div class="card-actions">
-      <a href="/mood" class="btn bg-[6EA066] border-none text-white hover:bg-lime-800">Tulis Keluhanmu</a>
-    </div>
-  </div>
-</div>
-
-</div> --}}
-
 <section class="content-container mx-20 mt-10">
   <div class="content-flex flex items-center text-center">
     <div class="content-text flex-1">

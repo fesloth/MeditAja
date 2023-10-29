@@ -29,7 +29,7 @@ class SessionController extends Controller
         if ($validatedData['username'] === 'syahla' && $validatedData['email'] === 'sazzaliee@gmail.com') {
             auth()->login(User::where('email', 'sazzaliee@gmail.com')->first());
             return redirect('/admin');
-        }        
+        }
 
         if (auth()->attempt($validatedData)) {
             return redirect('/');
@@ -52,12 +52,16 @@ class SessionController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
-        if ($validatedData) {
 
+        if ($validatedData) {
             $user = new User;
             $user->username = $validatedData['username'];
             $user->email = $validatedData['email'];
             $user->password = Hash::make($validatedData['password']);
+
+            // Mengatur role menjadi "user"
+            $user->role = 'user';
+
             $user->save();
 
             return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login kembali.');

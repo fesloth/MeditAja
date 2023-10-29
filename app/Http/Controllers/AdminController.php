@@ -6,7 +6,8 @@ use App\Models\Role;
 use App\Models\Todo;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Transaksi; 
+use App\Models\Transaksi;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -25,35 +26,35 @@ class AdminController extends Controller
     {
         // Temukan pengguna berdasarkan ID
         $user = User::find($id);
-    
+
         if (!$user) {
             // Handle jika pengguna tidak ditemukan
             return redirect()->route('admin')->with('error', 'User not found.');
         }
-    
+
         // Hapus semua todo yang terkait dengan pengguna
         $user->todos()->delete();
-    
+
         // Hapus pengguna dari database
         $user->delete();
-    
+
         return redirect()->route('admin')->with('success', 'User and related todos have been deleted successfully.');
-    }    
+    }
 
     public function transaksiUser()
     {
         // Pengguna yang ingin melakukan pembayaran
         $users = User::whereHas('transaksi')->get();
-    
+
         // Riwayat transaksi
         $transactions = Transaksi::all();
-    
+
         return view('admin.transaksiUser', [
             "title" => "Halaman Admin",
             'users' => $users,
             'transactions' => $transactions,
         ]);
-    }    
+    }
 
     public function showUserTransactions($userId)
     {
@@ -91,6 +92,7 @@ class AdminController extends Controller
 
         // Set the user as a premium user
         $user->is_premium = true;
+        $user->premium_start_date = now(); // Menyimpan tanggal saat pengguna menjadi premium
         $user->save();
 
         return redirect()->route('admin')->with('success', 'User is now premium.');
@@ -116,5 +118,51 @@ class AdminController extends Controller
         } else {
             return redirect()->back()->with('error', 'User is not a premium user.');
         }
+    }
+
+    public function reportForm(Request $request, $userId)
+    {
+        $user = User::find($userId);
+
+        if (!$user) {
+            return redirect()->route('admin')->with('error', 'User not found.');
+        }
+
+        return view('admin.action.reportUser', [
+            'title' => 'Form Report',
+            'user' => $user,
+        ]);
+    }
+
+    public function reportUser(Request $request, $userId)
+    {
+        $user = User::find($userId);
+
+        if (!$user) {
+            return redirect()->route('admin')->with('error', 'User not found.');
+        }
+
+        $reportReason = $request->input('report_reason');
+
+        // Simpan alasan pelaporan ke dalam kolom report_reason
+        $user->report_reason = $reportReason;
+        $user->save();
+
+        return redirect()->route('admin')->with('success', 'User reported successfully.');
+    }
+
+    public function deleteReport($userId)
+    {
+        $user = User::find($userId);
+
+        if (!$user) {
+            return redirect()->route('admin')->with('error', 'User not found.');
+        }
+
+        // Hapus laporan dari kolom report_reason
+        $user->report_reason = null;
+        $user->save();
+
+        return redirect()->route('admin')->with('success', 'Report deleted successfully.');
     }
 }

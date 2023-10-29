@@ -9,27 +9,6 @@
         <div class="flex items-stretch">
           <a href="/" class="btn btn-ghost rounded-btn">Beranda</a>
           <div class="dropdown dropdown-end">
-            <!-- Dropdown "Produktivitas" -->
-            <label tabindex="0" class="btn btn-ghost">
-              <div class="rounded-btn">
-                <!-- Icon untuk dropdown "Produktivitas" -->
-                Produktivitas <i class="fa-solid fa-chevron-down"></i>
-              </div>
-            </label>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
-              <!-- Tautan untuk fitur-fitur -->
-              <li>
-                <a href="/video" class="justify-between">
-                  Video Meditasi
-                </a>
-              </li>
-              <li><a href="/mood">Mood Tracker</a></li>
-              <li>
-                <a href="/todo">
-                  To-Do List
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

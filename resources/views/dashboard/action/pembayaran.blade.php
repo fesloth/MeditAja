@@ -1,4 +1,5 @@
 @extends('layouts.main')
+<div class="container bg-[CFFFC7]">
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
     <div class="flex-1 pl-5">
       <a href="#" class="btn btn-ghost normal-case text-xl">Paket Premium<i class="fa-solid fa-store"></i></a>
@@ -40,10 +41,10 @@
   </div>
   <form action="/transaksi" method="post">
     @csrf
-    <div class="container mx-auto mt-10">
+    <div class="mx-auto mt-32 mb-32">
         <h1 class="mb-5 text-slate-950 text-center text-2xl">Pembayaran Paket Premium - Rp. {{ number_format($hargaPaket) }}</h1>
         <div class="flex flex-col items-center">
-            <div class="bg-white p-6 rounded-lg shadow-md w-96">
+            <div class="bg-[91D086] p-6 rounded-lg shadow-md w-96">
                 <h2 class="text-lg font-semibold text-slate-800 text-center mb-4">Pilih Metode Pembayaran</h2>
                 <div class="mt-6 text-center">
                   <select name="payment_method" required class="bg-white text-slate-800 px-4 py-2 rounded-md mb-4">
@@ -52,9 +53,10 @@
                     <option value="PayPal">PayPal</option>
                 </select>                
                     <input type="text" name="jumlah_pembayaran" value="{{ $hargaPaket }}" readonly class="bg-white text-slate-800 px-4 py-2 rounded-md mb-4">                 
-                    <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg hover:bg-lime-800">Bayar Sekarang</button>
+                    <button type="submit" class="bg-[6EA066] text-white px-4 py-2 rounded-lg hover:bg-[CFFFC7] hover:text-slate-900">Bayar Sekarang</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
+@include('partials.footer')

@@ -41,7 +41,7 @@
             <button type="submit" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-[6EA066]">Simpan Perubahan</button>
         </div>
         <div class="mt-2">
-            <p class="text-end"><a href="/notes"><i class="fa-solid fa-arrow-left"></i> Back</a></p>
+            <p class="text-end"><a href="/notes"><i class="fa-solid fa-arrow-left"></i> Kembali</a></p>
         </div>
     </form>
 </div>

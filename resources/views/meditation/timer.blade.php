@@ -37,7 +37,7 @@
         </div>
         <div class="mt-3 flex justify-end items-end text-end">
             <a href="/todo" class="text-green-600 hover:text-green-700">
-                <i class="fas fa-arrow-left"></i> Back
+                <i class="fas fa-arrow-left"></i> Kembali
             </a>
         </div>
     </div>

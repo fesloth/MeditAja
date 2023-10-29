@@ -65,6 +65,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/profile', [UsersController::class, 'profile'])->middleware('auth');
     Route::post('/profile', [UsersController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
     Route::get('/edit', [UsersController::class, 'edit'])->middleware('auth');    
+    Route::get('/profile/delete/image', [UsersController::class, 'deleteProfileImage'])->middleware('auth')->name('profile.delete.image');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware(['auth', 'admin']);
     Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
@@ -75,8 +76,9 @@ Route::middleware(['web'])->group(function () {
 Route::post('/admin/makePremium/{id}', [AdminController::class, 'makeUserPremium'])
     ->name('admin.makePremium');
 Route::post('/admin/cancelPremium/{id}', [AdminController::class, 'cancelPremium'])->name('admin.cancelPremium');
-
-
+Route::post('/admin/reportUser/{id}', [AdminController::class, 'reportUser'])->name('admin.reportUser');
+Route::get('/admin/reportUser/{id}', [AdminController::class, 'reportform'])->name('admin.form');
+Route::delete('/admin/deleteReport/{userId}', [AdminController::class, 'deleteReport'])->name('admin.deleteReport');
 
 Route::get('/login', [SessionController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'loginProses']);

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -43,7 +44,7 @@ class UsersController extends Controller
         // Validate data
         $validator = Validator::make($request->all(), [
             'new_username' => 'required|string|max:255',
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size as needed
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif', // Adjust the allowed file types and size as needed
         ], [
             'profile_image.image' => 'The profile image must be an image.',
             'profile_image.mimes' => 'The profile image must be a file of type: jpeg, png, jpg, gif.',
@@ -76,5 +77,21 @@ class UsersController extends Controller
 
         // Redirect to the profile page with a success message
         return redirect('/profile')->with('success', 'Profile updated successfully.');
+    }
+
+    public function deleteProfileImage()
+    {
+        // Get the currently logged-in user
+        $user = Auth::user();
+
+        // Delete the user's profile image from storage if it exists
+        if ($user->profile_image) {
+            Storage::disk('public')->delete($user->profile_image);
+            $user->profile_image = null; // Set the profile image field to null in the database
+            $user->save(); // Save the changes to the database
+        }
+
+        // Redirect back to the edit profile page or any desired page after image deletion
+        return redirect('/edit')->with('success', 'Gambar profil berhasil dihapus.');
     }
 }

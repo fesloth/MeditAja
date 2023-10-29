@@ -33,7 +33,13 @@
                         Aksi
                     </th>
                     <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
-                        Premium Status
+                        Status
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                       Lapor
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                       Hapus User
                     </th>
                 </tr>
             </thead>
@@ -46,41 +52,64 @@
                     <td class="px-6 py-4 whitespace-nowrap text-slate-900">
                         {{ $user->username }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <form action="{{ route('admin.deleteUser', $user->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:underline">Hapus</button>
-                        </form>                  
+                    <td class="px-6 py-4 whitespace-nowrap">                                     
                         @if ($user->is_premium)
                             <form action="{{ route('admin.cancelPremium', $user->id) }}" method="post">
                                 @csrf
-                                <button type="submit" class="text-red-600 hover:underline">Batalkan Akses Premium</button>
+                                <button type="submit" class="text-red-600 hover:underline">
+                                    <i class="fas fa-times"></i> Batalkan Akses Premium
+                                </button>
                             </form>
                         @else
                             <form action="{{ route('admin.makePremium', $user->id) }}" method="post">
                                 @csrf
-                                <button type="submit" class="text-green-600 hover:underline">Jadikan Premium</button>
+                                <button type="submit" class="text-green-600 hover:underline">
+                                    <i class="fas fa-crown"></i> Jadikan Premium
+                                </button>
                             </form>
-                        @endif                        
-                  </td>                  
+                        @endif
+                    </td>                                 
                     <td class="px-6 py-4 whitespace-nowrap text-slate-800">
-                      @if ($user->is_premium && $user->premium_start_date)
-                          @php
-                              $now = \Carbon\Carbon::now();
-                              $duration = $user->premium_start_date->diff($now);
-                          @endphp
-                          @if ($duration->d > 0)
-                              {{ $duration->format('%ad %hh') }} {{-- Days and Hours --}}
-                          @else
-                              {{ $duration->format('%hh') }} {{-- Hours only --}}
-                          @endif
-                      @else
-                          N/A
-                      @endif
-                  </td>                  
+                        @if ($user->is_premium && $user->premium_start_date)
+                            @php
+                                $now = now();
+                            
+                                // Hitung selisih waktu dalam hari
+                                $daysDifference = $now->diffInDays($user->premium_start_date);
+                            
+                                // Tampilkan pesan dengan selisih waktu dalam hari
+                                $message = $daysDifference . " hari";
+                            @endphp
+                            
+                            {{ $message }}
+                        @else
+                            Belum Premium
+                        @endif
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        @if ($user->report_reason)
+                            <form action="{{ route('admin.deleteReport', $user->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-green-600 hover:underline">
+                                   Hapus Laporan
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('admin.form', ['id' => $user->id]) }}" class="text-blue-700 hover:underline">Laporkan Pengguna</a>
+                        @endif
+                    </td>       
+                    <td class="whitespace-nowrap">
+                        <form action="{{ route('admin.deleteUser', $user->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:underline">
+                                <i class="fas fa-trash-alt"></i> Hapus
+                            </button>
+                        </form>        
+                    </td>                        
                 </tr>
-                @endforeach
+                @endforeach                
             </tbody>
         </table>
     </div>

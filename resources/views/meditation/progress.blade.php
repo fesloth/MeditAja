@@ -4,7 +4,7 @@
 <div class="container flex justify-center items-center">
     <div class="stats shadow text-center bg-white mb-12 p-4 mx-auto border border-gray-300 rounded-md">
         <div class="stat">
-            <div class="stat-title text-slate-800">Jumlah Task yang belum selesai</div>
+            <div class="stat-title text-slate-800">Jumlah Tugas yang belum selesai</div>
             <div class="stat-value text-primary">
                 <!-- Tampilkan jumlah tugas yang belum selesai di sini -->
                 {{ $uncompletedTasks }}
@@ -12,7 +12,7 @@
         </div>
         <div class="stat">
             <div class="mt-3 stat-value text-secondary">
-                <span class="">Jumlah task:</span>{{ $totalTasks }}
+                <span class="">Jumlah Tugas:</span>{{ $totalTasks }}
             </div>
         </div>
         <div class="stat">
@@ -31,7 +31,7 @@
                 {{ $completedTasks }}
             </div>
             <div class="stat-title text-slate-800">
-                Task yang sudah selesai
+                Tugas yang sudah selesai
             </div>
         </div>
     </div>

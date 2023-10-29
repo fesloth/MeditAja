@@ -56,6 +56,7 @@
                 <th class="text-left p-3 text-slate-900">Nama Pengguna</th>
                 <th class="text-left p-3 text-slate-900">Jumlah Pembayaran</th>
                 <th class="text-left p-3 text-slate-900">Metode Pembayaran</th>
+                <th class="text-left p-3 text-slate-900">Waktu Pembayaran</th>
                 <th class="text-left p-3 text-slate-900">Aksi</th>
             </tr>
         </thead>
@@ -66,6 +67,8 @@
                 <td class="text-slate-900 p-3">{{ $transaction->user->username }}</td>
                 <td class="text-slate-900 p-3">Rp. {{ number_format($transaction->jumlah_pembayaran, 2) }}</td>
                 <td class="text-slate-900 p-3">{{ $transaction->payment_method }}</td>
+                <td class="text-slate-900 p-3">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d-m-Y') }}
+                </td>
                 <td class="p-3">
                     <a href="{{ route('admin.deleteTransaction', $transaction->id) }}" class="text-red-500">Hapus</a>
                 </td>
