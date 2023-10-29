@@ -6,14 +6,14 @@
     <form action="{{ route('notes.store') }}" method="POST">
         @csrf
         <div class="mt-2">
-            <input type="text" name="title" placeholder="Judul Catatan" class="w-full p-2 border rounded-lg bg-white">
+            <input type="text" name="title" placeholder="Judul Catatan" class="w-full p-2 border rounded-lg bg-white text-slate-700" required>
         </div>
         <div class="mt-2">
-            <textarea name="content" placeholder="Isi Catatan" class="w-full p-2 border rounded-lg resize-y bg-white"></textarea>
+            <textarea name="content" placeholder="Isi Catatan" class="w-full p-2 border rounded-lg resize-y bg-white text-slate-700" required></textarea>
         </div>
         <div class="mt-2">
-          <select name="category" id="category" class="w-full p-2 border rounded-lg bg-white">
-                <option value="" disabled selected>Pilih Kategori</option>
+          <select name="category" id="category" class="w-full p-2 border rounded-lg bg-white text-slate-700" required>
+                <option class="text-slate-500" value="" disabled selected>Pilih Kategori</option>
                 <option value="Pekerjaan">Pekerjaan</option>
                 <option value="Pribadi">Pribadi</option>
                 <option value="Penting">Penting</option>
@@ -37,7 +37,7 @@
           </select>
       </div>    
         <div class="mt-2">
-            <button type="submit" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-green-600">Simpan Catatan</button>
+            <button type="submit" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-[6EA066]">Simpan Catatan</button>
         </div>
         <div class="mt-2">
             <p class="text-end"><a href="/notes"><i class="fa-solid fa-arrow-left"></i> Back</a></p>

@@ -17,10 +17,13 @@ class MainController extends Controller
         ]);
     }
 
-    public function music()
+    public function peringatan()
     {
-        return view('dashboard.music', [
-            "title" => "Playlist"
+        $user = Auth::user();
+        
+        return view('dashboard.peringatan', [
+            "title" => "Warning!",
+            "user" => $user
         ]);
     }
 }

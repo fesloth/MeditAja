@@ -2,7 +2,7 @@
 
 <div class="p-4 max-w-md mx-auto mt-28 bg-white">
     <h1 class="text-xl font-semibold mb-4 text-slate-800">Edit Catatan Meditasi</h1>
-    <form action="{{ route('jurnal.update', $journal->id) }}" method="POST" style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;>
+    <form action="{{ route('jurnal.update', $journal->id) }}" method="POST" style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
         @csrf
         @method('PUT')
 

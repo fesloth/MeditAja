@@ -14,7 +14,7 @@
   <nav>
     <header class="footer-title">Kontak Kami</header> 
     <a class="link link-hover">Tentang Kami</a> 
-    <a class="link link-hover">Developer</a> 
+    <a target="_blank" href="https://github.com/fesloth" class="link link-hover">Developer</a> 
     <a class="link link-hover">Instagram</a> 
     <a class="link link-hover">Twitter</a>
   </nav> 

@@ -32,6 +32,21 @@
                 To-Do List
               </a>
             </li>
+            <li>
+              <a href="/kalk ">
+                Kalkulator Relaksasi
+              </a>
+            </li>
+            <li>
+              <a href="/pesan">
+                Pesan Pagi
+              </a>
+            </li>
+            <li>
+              <a href="/jurnal">
+                Jurnal
+              </a>
+            </li>
           </ul>
         </div>
       </div>

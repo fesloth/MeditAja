@@ -14,7 +14,7 @@
         @foreach($journals as $journal)
         <div class="bg-white p-6 rounded shadow-md">
             <p class="text-gray-500">Tanggal: {{ $journal->date }}</p>
-            <p class="text-gray-800 text-lg my-4">Catatan Meditasi: {{ $journal->entry }}</p>
+            <p class="text-gray-800 text-lg my-4">{{ $journal->entry }}</p>
             <div class="flex items-center justify-between">
                 <a href="{{ route('jurnal.edit', $journal->id) }}" class="text-blue-500 hover:underline h-10">Edit</a>
                 <form action="{{ route('jurnal.destroy', $journal->id) }}" method="POST">
@@ -32,7 +32,6 @@
     @else
     <div class="text-center h-screen mx-auto mt-20">
         <p class="text-gray-600 text-lg mb-4">Tidak ada catatan meditasi.</p>
-        <a href="{{ route('jurnal.create') }}" class="bg-[6EA066] text-white px-6 py-3 rounded hover-bg-[91D086] inline-block">Tambah Jurnal Meditasi</a>
     </div>
     @endif
 </div>

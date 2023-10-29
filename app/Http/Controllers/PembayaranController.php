@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PaketPremium;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
+use Illuminate\Support\Facades\Auth;
 
 class PembayaranController extends Controller
 {
@@ -26,28 +27,27 @@ class PembayaranController extends Controller
         return view('dashboard.action.pembayaran', [
             "title" => "Payment",
             "paketPremiums" => $paketPremiums,
-            "hargaPaket" => $harga, // Mengirim variabel $harga ke tampilan
+            "hargaPaket" => $harga,
         ]);
     }
 
     public function createTransaction(Request $request)
-{
-    // Ambil data yang diperlukan dari request atau sesuai kebutuhan
-    $userId = $request->input('user_id');
-    $paketId = $request->input('paket_id');
-    $jumlahPembayaran = $request->input('jumlah_pembayaran');
+    {
+        $user_id = Auth::id(); 
+        // Validate and retrieve the form input data
+        $validatedData = $request->validate([
+            'payment_method' => 'required', 
+            'jumlah_pembayaran' => 'required', 
+        ]);      
+        
+        $validatedData['user_id'] = $user_id;
 
-    // Buat data transaksi baru
-    $transaksi = new Transaksi([
-        'user_id' => $userId,
-        'paket_id' => $paketId,
-        'jumlah_pembayaran' => $jumlahPembayaran,
-        'waktu_pembayaran' => now(), // Menggunakan waktu saat ini
-    ]);
+        // Create a new transaction
+        $transaksi = new Transaksi($validatedData);
 
-    // Simpan transaksi ke dalam database
-    $transaksi->save();
+        // Save the transaction to the database
+        $transaksi->save();
 
-    // Selanjutnya, Anda dapat melakukan apa pun sesuai kebutuhan aplikasi Anda
-}
+        return redirect()->route('admin');
+    }
 }

@@ -39,9 +39,25 @@
                 </a>
               </li>
               <li><a href="/mood">Mood Tracker</a></li>
+              <li><a href="/notes">Catatan</a></li>
               <li>
                 <a href="/todo">
                   To-Do List
+                </a>
+              </li>
+              <li>
+                <a href="/kalk ">
+                  Kalkulator Relaksasi
+                </a>
+              </li>
+              <li>
+                <a href="/pesan">
+                  Pesan Pagi
+                </a>
+              </li>
+              <li>
+                <a href="/jurnal">
+                  Jurnal
                 </a>
               </li>
             </ul>

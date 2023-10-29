@@ -8,15 +8,15 @@
                 @csrf
                 <div class="mb-4">
                     <label for="description" class="block mb-2">Todo</label>
-                    <input name="description" type="text" placeholder="Enter your task..." autofocus autocomplete="off" id="description" class="w-full px-3 py-2 border rounded bg-white">
+                    <input name="description" type="text" placeholder="Enter your task..." autofocus autocomplete="off" id="description" class="w-full px-3 py-2 border rounded bg-white" required>
                 </div>
                 <div class="mb-4">
                     <label for="deadline" class="block mb-2">Deadline</label>
-                    <input type="date" name="deadline" class="w-full px-3 py-2 border rounded bg-white">
+                    <input type="date" name="deadline" class="w-full px-3 py-2 border rounded bg-white" required>
                 </div>
                 <div class="mb-4">
                     <label for="priority" class="block mb-2">Priority</label>
-                    <select name="priority" id="priority" class="w-full px-3 py-2 border rounded bg-white">
+                    <select name="priority" id="priority" class="w-full px-3 py-2 border rounded bg-white" required>
                         <option value="">Choose</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>

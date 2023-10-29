@@ -1,64 +1,90 @@
 @extends('layouts.main')
 
-<div class="navbar bg-[91D086] text-slate-900 shadow-xl w-full">
-    <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl">MeditAja</a>
+<div class="navbar bg-[91D086] text-slate-900 shadow-xl fixed top-0 left-0 w-full z-[10]">
+    <div class="flex-1 pl-8">
+      <img src="{{ asset('img/flower.png') }}" width="40">
+      <a href="/" class="normal-case text-xl ml-1" data-dropdown-ignore>MeditAja</a>
+  
     </div>
     <div class="flex-none">
-      <ul class="mr-8 flex space-x-4">
-        <li>
-          <a href="{{ route('adminTransaksi') }}" class="hover:bg-green-300 p-3 rounded-md">Data Transaksi</a>
-        </li>
-        <li>
-          <a href="{{ route('logout') }}" class="hover:bg-green-300 p-3 rounded-md">Logout</a>
-        </li>
-      </ul>  
+        <ul class="mr-8 flex space-x-4">
+            <li>
+                <a href="{{ route('adminTransaksi') }}" class="hover:bg-[6EA066] p-3 rounded-md">Data Transaksi</a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}" class="hover:bg-[6EA066] p-3 rounded-md">Keluar</a>
+            </li>
+        </ul>
     </div>
-  </div>
-  <div class="flex flex-col justify-center items-center my-20">
-    <h1 class="text-3xl mb-4">Selamat Datang <span class="text-indigo-600">Admin!</span></h1>
+</div>
+<div class="flex flex-col justify-center items-center my-20 mt-40">
+    <h1 class="text-3xl mb-4 text-slate-800">Selamat Datang <span class="text-[6EA066]">Admin!</span></h1>
     <div class="relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4">
-      <table class="w-full shadow-lg divide-gray-200">  
-          <thead class="bg-[6EA066]">
-              <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      No
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Daftar User
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Aksi
-                  </th>
-              </tr>
-          </thead>
-          <tbody class="bg-[91D086] divide-y divide-gray-200">
-              @foreach($users as $user)
-              <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-slate-900">
-                      {{ $loop->iteration }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-slate-900">
-                      {{ $user->username }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                      <form action="{{ route('admin.deleteUser', $user->id) }}" method="post">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="text-red-600 hover:underline">Hapus</button>
-                      </form>
-                  </td>
-              </tr>
-              @endforeach
-          </tbody>
-      </table>
-  </div>
-  <nav aria-label="Page navigation example" class="mt-10">
-      {{ $users->links() }} <!-- Menampilkan tautan halaman paginasi -->
-  </nav>
-  
-
-  </div>
-  
-  
-  
+        <table class="w-full shadow-lg divide-gray-200">
+            <thead class="bg-[6EA066] text-center">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                        No
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                        Daftar User
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                        Aksi
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                        Premium Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-[91D086] divide-y divide-gray-200 text-center">
+                @foreach($users as $user)
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-slate-900">
+                        {{ $loop->iteration }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-slate-900">
+                        {{ $user->username }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <form action="{{ route('admin.deleteUser', $user->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:underline">Hapus</button>
+                        </form>                  
+                        @if ($user->is_premium)
+                            <form action="{{ route('admin.cancelPremium', $user->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="text-red-600 hover:underline">Batalkan Akses Premium</button>
+                            </form>
+                        @else
+                            <form action="{{ route('admin.makePremium', $user->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="text-green-600 hover:underline">Jadikan Premium</button>
+                            </form>
+                        @endif                        
+                  </td>                  
+                    <td class="px-6 py-4 whitespace-nowrap text-slate-800">
+                      @if ($user->is_premium && $user->premium_start_date)
+                          @php
+                              $now = \Carbon\Carbon::now();
+                              $duration = $user->premium_start_date->diff($now);
+                          @endphp
+                          @if ($duration->d > 0)
+                              {{ $duration->format('%ad %hh') }} {{-- Days and Hours --}}
+                          @else
+                              {{ $duration->format('%hh') }} {{-- Hours only --}}
+                          @endif
+                      @else
+                          N/A
+                      @endif
+                  </td>                  
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="Page navigation example" class="mt-10">
+        {{ $users->links() }}
+    </nav>
+</div>

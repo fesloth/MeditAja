@@ -7,10 +7,10 @@
         @csrf
         @method('PUT') <!-- Tambahkan metode PUT untuk update -->
         <div class="mt-2">
-            <input type="text" name="title" value="{{ $note->title }}" class="w-full p-2 border rounded-lg bg-white" placeholder="Judul Catatan">
+            <input type="text" name="title" value="{{ $note->title }}" class="w-full p-2 border rounded-lg bg-white text-slate-700" placeholder="Judul Catatan">
         </div>
         <div class="mt-2">
-            <textarea name="content" class="w-full p-2 border rounded-lg resize-y bg-white" placeholder="Isi Catatan">{{ $note->content }}</textarea>
+            <textarea name="content" class="w-full p-2 border rounded-lg resize-y bg-white text-slate-700" placeholder="Isi Catatan">{{ $note->content }}</textarea>
         </div>
         <div class="mt-2">
             <select name="category" id="category" class="w-full p-2 border rounded-lg bg-white">
@@ -38,7 +38,7 @@
             </select>
         </div>        
         <div class="mt-2">
-            <button type="submit" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-green-600">Simpan Perubahan</button>
+            <button type="submit" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-[6EA066]">Simpan Perubahan</button>
         </div>
         <div class="mt-2">
             <p class="text-end"><a href="/notes"><i class="fa-solid fa-arrow-left"></i> Back</a></p>

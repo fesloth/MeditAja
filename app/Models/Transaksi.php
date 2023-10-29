@@ -14,10 +14,10 @@ class Transaksi extends Model
 
     // Kolom-kolom yang dapat diisi
     protected $fillable = [
+        'payment_method',
         'user_id',
         'paket_id',
         'jumlah_pembayaran',
-        'waktu_pembayaran',
     ];
 
     // Relasi dengan model User

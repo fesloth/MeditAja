@@ -20,9 +20,20 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);  
+        return $this->hasMany(Task::class);
     }
-    
+
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
+
+    public function todos()
+    {
+        return $this->hasMany(Todo::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

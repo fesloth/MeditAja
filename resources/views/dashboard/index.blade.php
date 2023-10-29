@@ -23,7 +23,7 @@
     <div class="content-text flex-1 ml-8">
       <h2 class="text-2xl font-semibold text-[#2d334a] mb-4">Hilangkan rasa cemas dengan melakukan meditasi di rumah</h2>
       <p class="text-lg text-[#2d334a]">Temukan kedamaian dan kesejahteraan melalui meditasi yang mudah diakses dari rumah Anda.</p>
-      <a href="/video" class="btn bg-[6EA066] border-none text-white hover:bg-lime-800 mt-4">Coba meditasi</a>
+      <a href="/video" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086] mt-4">Coba meditasi</a>
     </div>
   </div>
 </section>
@@ -33,7 +33,7 @@
     <div class="content-text flex-1 mr-8">
       <h2 class="text-2xl font-semibold text-[#2d334a] mb-4">Tingkatkan Produktivitasmu</h2>
       <p class="text-lg text-[#2d334a]">Apa saja kegiatan yang ingin Anda lakukan hari ini?</p>
-      <a href="/todo" class="btn bg-[6EA066] border-none text-white hover:bg-lime-800 mt-4">Tulis kegiatan harianmu</a>
+      <a href="/todo" class="btn bg-[6EA066] border-none text-white hover:bg-[91D086] mt-4">Tulis kegiatan harianmu</a>
     </div>
     <div class="content-image">
       <img src="{{ asset('img/read.svg') }}" alt="Third Image" class="w-80 h-auto" />
