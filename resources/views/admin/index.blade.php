@@ -100,13 +100,13 @@
                         @endif
                     </td>       
                     <td class="whitespace-nowrap">
-                        <form action="{{ route('admin.deleteUser', $user->id) }}" method="post">
+                        <form action="{{ route('admin.deleteUser', $user->id) }}" method="post" id="delete-form-{{ $user->id }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:underline">
+                            <button type="button" onclick="confirmDelete({{ $user->id }});" class="text-red-600 hover:underline">
                                 <i class="fas fa-trash-alt"></i> Hapus
                             </button>
-                        </form>        
+                        </form>                        
                     </td>                        
                 </tr>
                 @endforeach                
@@ -117,3 +117,12 @@
         {{ $users->links() }}
     </nav>
 </div>
+<script>
+    function confirmDelete(userId) {
+        if (confirm("Yakin ingin menghapus user ini?")) {
+            document.getElementById('delete-form-' + userId).submit();
+        } else {
+            alert("Gagal menghapus user.");
+        }
+    }
+</script>

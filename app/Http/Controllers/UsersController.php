@@ -12,13 +12,6 @@ class UsersController extends Controller
 {
     //views
 
-    // public function index()
-    // {
-    //     return view('users.progress', [
-    //         "title" => "Progress"
-    //     ]);
-    // }
-
     public function profile()
     {
         $user = Auth::user(); // Mengambil data pengguna berdasarkan email yang terkait dengan pengguna yang saat ini masuk

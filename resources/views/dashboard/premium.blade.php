@@ -70,7 +70,7 @@
   </div>
   
 
-<div class="cards-container flex mt-36 mx-32 my-36">
+  <div class="cards-container flex mt-36 mx-32 my-36">
     @foreach($paketPremiums as $paketPremium)
     <div class="card w-96 bg-[91D086] text-slate-900 mx-4 shadow-xl">
         <div class="card-body items-center text-center m-10">
@@ -78,11 +78,12 @@
             <p>Rp. {{ number_format($paketPremium->harga) }}.-</p>
             <div class="card-actions">
                 <button class="btn bg-[6EA066] border-none text-slate-900 hover:bg-[CFFFC7]">
-                  <a href="{{ url('/checkout', ['harga' => $paketPremium->harga]) }}">Beli Sekarang</a>
+                  <a href="{{ route('checkout', ['harga' => $paketPremium->harga, 'paket_id' => $paketPremium->id]) }}">Beli Sekarang</a>
                 </button>
             </div>
         </div>
     </div>
     @endforeach
+</div>
 </div>
 @include('partials.footer')

@@ -74,6 +74,6 @@ class SessionController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/'); // Anda bisa mengganti URL redirect sesuai kebutuhan
+        return redirect('/'); 
     }
 }

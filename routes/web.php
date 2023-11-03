@@ -86,7 +86,7 @@ Route::get('/register', [SessionController::class, 'register'])->name('session.r
 Route::post('/register', [SessionController::class, 'registerProses']);
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
-Route::get('/checkout/{harga}', [PembayaranController::class, 'index'])->middleware('auth');
+Route::get('/checkout/{harga}/{paket_id}', [PembayaranController::class, 'index'])->middleware('auth')->name('checkout');
 Route::post('/transaksi', [PembayaranController::class, 'createTransaction'])->middleware('auth')->name('create.transaction');
 Route::get('/premium', [PembayaranController::class, 'premium'])->middleware('auth');
 Route::post('/process-payment', [PembayaranController::class, 'processPayment']); 

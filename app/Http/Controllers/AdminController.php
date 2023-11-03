@@ -16,9 +16,12 @@ class AdminController extends Controller
     {
         $users = User::paginate(4);
 
+        $transactions = Transaksi::all();
+
         return view('admin.index', [
             "title" => "Halaman Admin",
-            'users' => $users
+            'users' => $users,
+            'transactions' => $transactions,
         ]);
     }
 
@@ -34,6 +37,7 @@ class AdminController extends Controller
 
         // Hapus semua todo yang terkait dengan pengguna
         $user->todos()->delete();
+        $user->transaksi()->delete();
 
         // Hapus pengguna dari database
         $user->delete();

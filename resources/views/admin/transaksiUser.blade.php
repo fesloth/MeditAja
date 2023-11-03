@@ -53,6 +53,7 @@
         <thead>
             <tr>
                 <th class="text-left p-3 text-slate-900">ID Transaksi</th>
+                <th class="text-left p-3 text-slate-900">ID Paket</th>
                 <th class="text-left p-3 text-slate-900">Nama Pengguna</th>
                 <th class="text-left p-3 text-slate-900">Jumlah Pembayaran</th>
                 <th class="text-left p-3 text-slate-900">Metode Pembayaran</th>
@@ -64,6 +65,7 @@
             @foreach($transactions as $transaction)
             <tr>
                 <td class="text-slate-900 p-3">{{ $transaction->id }}</td>
+                <td class="text-slate-900 p-3">{{ $transaction->paket_id }}</td>
                 <td class="text-slate-900 p-3">{{ $transaction->user->username }}</td>
                 <td class="text-slate-900 p-3">Rp. {{ number_format($transaction->jumlah_pembayaran, 2) }}</td>
                 <td class="text-slate-900 p-3">{{ $transaction->payment_method }}</td>

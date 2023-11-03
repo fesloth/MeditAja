@@ -20,7 +20,7 @@ class PembayaranController extends Controller
         ]);
     }
 
-    public function index($harga)
+    public function index($harga, $paket_id)
     {
         $paketPremiums = PaketPremium::all();
 
@@ -28,26 +28,29 @@ class PembayaranController extends Controller
             "title" => "Payment",
             "paketPremiums" => $paketPremiums,
             "hargaPaket" => $harga,
+            "paket_id" => $paket_id, 
         ]);
     }
 
     public function createTransaction(Request $request)
     {
-        $user_id = Auth::id(); 
         // Validate and retrieve the form input data
         $validatedData = $request->validate([
-            'payment_method' => 'required', 
-            'jumlah_pembayaran' => 'required', 
-        ]);      
-        
-        $validatedData['user_id'] = $user_id;
-
+            'payment_method' => 'required',
+            'jumlah_pembayaran' => 'required',
+            'paket_id' => 'required',
+        ]);
+    
         // Create a new transaction
         $transaksi = new Transaksi($validatedData);
-
+    
+        // Set the user_id for the transaction
+        $transaksi->user_id = Auth::id();
+    
         // Save the transaction to the database
         $transaksi->save();
-
+    
         return redirect()->route('admin');
     }
+    
 }

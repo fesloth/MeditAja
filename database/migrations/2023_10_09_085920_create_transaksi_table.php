@@ -13,15 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // ID pengguna yang melakukan pembayaran
-            $table->unsignedBigInteger('paket_id'); // ID paket premium yang dibeli
             $table->decimal('jumlah_pembayaran', 10, 2); // Jumlah pembayaran
             $table->dateTime('waktu_pembayaran');
             $table->timestamps();
-
-            // Menambahkan indeks untuk kolom foreign key
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('paket_id')->references('id')->on('paket_premium');
         });
     }
 

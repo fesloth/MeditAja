@@ -69,11 +69,11 @@
                 if (passwordVisible) {
                     passwordInput.type = "password";
                     showIcon.style.display = "block";
-                    hideIcon.style display = "none";
+                    hideIcon.style.display = "none"; // Fix the typo here
                 } else {
                     passwordInput.type = "text";
                     showIcon.style.display = "none";
-                    hideIcon.style display = "block";
+                    hideIcon.style.display = "block"; // Fix the typo here
                 }
                 passwordVisible = !passwordVisible;
             });

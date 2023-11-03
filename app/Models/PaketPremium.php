@@ -15,5 +15,11 @@ class PaketPremium extends Model
         'nama_paket',
         'deskripsi',
         'harga',
+        'paket_id'
     ];
+
+    public static function getPaketIdByNama($namaPaket)
+    {
+        return static::where('nama_paket', $namaPaket)->value('id');
+    }
 }

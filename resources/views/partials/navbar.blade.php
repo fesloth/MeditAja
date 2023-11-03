@@ -71,7 +71,7 @@
         </a>
       </li>
       <li><a href="/premium">Berlangganan (premium)</a></li>
-      <li><a href="{{ route('logout') }}">Keluar <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+      <li><a href="#" onclick="confirmLogout();">Keluar <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
     </ul>
     @endauth
     @guest
@@ -81,3 +81,14 @@
     @endguest
   </div>
 </div>
+<script>
+  function confirmLogout() {
+      if (confirm("Yakin ingin keluar?")) {
+          // User confirmed, perform the logout action
+          window.location.href = "{{ route('logout') }}";
+      } else {
+          // User canceled, show an alert
+          alert("Keluar gagal");
+      }
+  }
+  </script>

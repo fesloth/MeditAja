@@ -93,7 +93,7 @@ class ContentController extends Controller
 
     public function createTodo()
     {
-        return view('meditation.action.create', ['title' => 'Create Task']);
+        return view('meditation.action.create', ['title' => 'Buat Tugas']);
     }
 
     public function storeTodo(Request $request)
@@ -119,7 +119,7 @@ class ContentController extends Controller
         $task = Todo::find($id);
 
         return view('meditation.action.edit', [
-            'title' => 'Edit Task', 'task' => $task
+            'title' => 'Edit Tugas', 'task' => $task
         ]);
     }
 
@@ -294,7 +294,7 @@ class ContentController extends Controller
         return view('dashboard.action.create', [
             "title" => "Notes",
             "user" => $user
-        ]); // 'notes.create' adalah nama tampilan yang akan Anda buat.
+        ]); 
     }
 
     public function filterNotes(Request $request)
@@ -393,13 +393,12 @@ class ContentController extends Controller
     public function video()
     {
         return view('meditation.video', [
-            "title" => "Video"
+            "title" => "Video Meditasi",
         ]);
     }
 
     public function mood()
     {
-        // Array of random inspirational messages
         $user = Auth::user();
 
         $inspirationalMessages = [
@@ -420,7 +419,6 @@ class ContentController extends Controller
             "Jadilah pemberi inspirasi bagi dirimu sendiri dan orang lain dalam perjalanan menuju kesehatan mental yang lebih baik."
         ];
 
-        // Get a random message from the array
         $randomMessage = $inspirationalMessages[array_rand($inspirationalMessages)];
 
         return view('meditation.moodtracker', [
@@ -433,20 +431,17 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the form data
         $validatedData = $request->validate([
             'mood' => 'required|max:255',
             'description' => 'nullable',
         ]);
 
-        // Create a new Mood instance and save it to the database
         $newMood = Mood::create([
-            'user_id' => auth()->id(), // Assuming you're associating moods with the currently authenticated user.
+            'user_id' => auth()->id(), 
             'mood' => $validatedData['mood'],
             'description' => $validatedData['description'],
         ]);
 
-        // Array of random inspirational messages
         $inspirationalMessages = [
             "Kesehatan mentalmu adalah harta yang berharga. Rawatlah dengan baik!",
             "Jangan ragu untuk mencari dukungan jika merasa terbebani. Kamu tidak sendirian.",
@@ -465,7 +460,6 @@ class ContentController extends Controller
             "Jadilah pemberi inspirasi bagi dirimu sendiri dan orang lain dalam perjalanan menuju kesehatan mental yang lebih baik."
         ];
 
-        // Get a random message from the array
         $randomMessage = $inspirationalMessages[array_rand($inspirationalMessages)];
 
         return redirect('/mood')->with('success', 'Mood successfully stored.')->with('randomMessage', $randomMessage);

@@ -88,7 +88,7 @@
                     <a href="{{ route('edit.note', ['id' => $note->id]) }}">Edit</a>
                 </button>
                 <button class="bg-red-500 text-white px-3 py-1 rounded-lg">
-                    <a href="{{ route('delete.note', ['id' => $note->id]) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus catatan ini?">Hapus</a>
+                    <a href="{{ route('delete.note', ['id' => $note->id]) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus catatan ini?')">Hapus</a>
                 </button>                
             </div>            
         </div>

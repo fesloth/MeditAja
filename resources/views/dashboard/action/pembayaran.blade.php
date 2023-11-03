@@ -46,6 +46,7 @@
         <div class="flex flex-col items-center">
             <div class="bg-[91D086] p-6 rounded-lg shadow-md w-96">
                 <h2 class="text-lg font-semibold text-slate-800 text-center mb-4">Pilih Metode Pembayaran</h2>
+                <input type="hidden" name="paket_id" value="{{ $paket_id }}">
                 <div class="mt-6 text-center">
                   <select name="payment_method" required class="bg-white text-slate-800 px-4 py-2 rounded-md mb-4">
                     <option value="" disabled selected>Pilih Metode Pembayaran</option>
