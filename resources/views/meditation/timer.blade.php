@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
  <!-- Timer -->
-<div class="container mx-auto mt-48">
-    <div class="bg-white rounded-lg shadow-md mx-52">
-      <div class="px-4 py-6">
+<div class="container mx-auto mt-48 max-sm:mt-32 max-sm:mx-0">
+    <div class="bg-white rounded-lg shadow-md mx-52 max-sm:mx-5">
+      <div class="px-4 py-6 max-sm:px-2 max-sm:py-4">
         <h1 class="text-center text-slate-800 text-lg font-semibold">Timer</h1>
       </div>
       <div class="p-5">

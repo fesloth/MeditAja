@@ -1,13 +1,12 @@
 @extends('layouts.main')
 
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl fixed top-0 left-0 w-full z-[10]">
-    <div class="flex-1 pl-8">
-      <img src="{{ asset('img/flower.png') }}" width="40">
-      <a href="/" class="normal-case text-xl ml-1" data-dropdown-ignore>MeditAja</a>
-  
+    <div class="flex-1 pl-8 max-sm:pl-0">
+        <img class="max-sm:hidden" src="{{ asset('img/flower.png') }}" width="40">
+        <a href="/" class="normal-case text-xl ml-1" data-dropdown-ignore>MeditAja</a>
     </div>
-    <div class="flex-none">
-        <ul class="mr-8 flex space-x-4">
+    <div class="max-sm:mr-0">
+        <ul class="mr-8 flex space-x-4 max-sm:mr-0">
             <li>
                 <a href="{{ route('adminTransaksi') }}" class="hover:bg-[6EA066] p-3 rounded-md">Data Transaksi</a>
             </li>
@@ -19,8 +18,8 @@
 </div>
 <div class="flex flex-col justify-center items-center my-20 mt-40">
     <h1 class="text-3xl mb-4 text-slate-800">Selamat Datang <span class="text-[6EA066]">Admin!</span></h1>
-    <div class="relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4">
-        <table class="w-full shadow-lg divide-gray-200">
+    <div class="relative overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4 max-w-full">
+        <table class="w-full shadow-lg divide-gray-200 max-sm:px-48">
             <thead class="bg-[6EA066] text-center">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">

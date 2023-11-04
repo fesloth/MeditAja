@@ -1,7 +1,7 @@
 @extends('layouts.main')
 <div class="container bg-[CFFFC7]">
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
-    <div class="flex-1 pl-5">
+    <div class="flex-1 pl-5 max-sm:hidden">
       <a href="#" class="btn btn-ghost normal-case text-xl">Paket Premium<i class="fa-solid fa-store"></i></a>
     </div>
     <div class="flex-none">
@@ -11,7 +11,7 @@
           <a href="/premium" class="btn btn-ghost rounded-btn">Kembali</a>
           <div class="dropdown dropdown-end">
             <!-- Dropdown "Produktivitas" -->
-            <label tabindex="0" class="btn btn-ghost">
+            <label tabindex="0" class="btn btn-ghost max-sm:hidden">
               <div class="rounded-btn">
                 <!-- Icon untuk dropdown "Produktivitas" -->
                 Produktivitas <i class="fa-solid fa-chevron-down"></i>
@@ -41,7 +41,7 @@
   </div>
   <form action="/transaksi" method="post">
     @csrf
-    <div class="mx-auto mt-32 mb-32">
+    <div class="mx-auto max-sm:mx-10 mt-32 mb-32">
         <h1 class="mb-5 text-slate-950 text-center text-2xl">Pembayaran Paket Premium - Rp. {{ number_format($hargaPaket) }}</h1>
         <div class="flex flex-col items-center">
             <div class="bg-[91D086] p-6 rounded-lg shadow-md w-96">

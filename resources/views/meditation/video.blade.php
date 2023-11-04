@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="container mx-auto mt-8 text-center">
+{{-- <div class="container mx-auto mt-8 text-center">
     <!-- Tombol Pencarian -->
     <div class="mt-20">
         <div class="justify-center flex items-center">
@@ -42,11 +42,11 @@
                 <i class="fas fa-search"></i>
             </button>
         </div>
-    </div>
+    </div> --}}
 
     <!-- 4 Kotak dengan Tombol Play -->
-    <div class="flex justify-evenly mt-16">
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+    <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-16">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8">
             <!-- Konten Kotak 1 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=wIiUxN5sE7Y" target="_blank">
@@ -54,7 +54,7 @@
                 </a>
             </div>
         </div>
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8">
             <!-- Konten Kotak 2 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8">
             <!-- Konten Kotak 3 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8">
             <!-- Konten Kotak 4 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -82,8 +82,8 @@
         </div>
     </div>
     <!-- 4 Kotak dengan Tombol Play -->
-    <div class="flex justify-evenly mt-8">
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+    <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-8 max-sm:mt-0">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
             <!-- Konten Kotak 1 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
             <!-- Konten Kotak 2 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -101,7 +101,7 @@
             </div>
         </div>
 
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
             <!-- Konten Kotak 3 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
@@ -110,7 +110,159 @@
             </div>
         </div>
 
-        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 4 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+       <!-- 4 Kotak dengan Tombol Play -->
+       <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-8 max-sm:mt-0">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 1 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 2 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 3 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 4 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+     <!-- 4 Kotak dengan Tombol Play -->
+     <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-8 max-sm:mt-0">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 1 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 2 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 3 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 4 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+     <!-- 4 Kotak dengan Tombol Play -->
+     <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-8 max-sm:mt-0">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 1 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 2 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 3 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 4 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+     <!-- 4 Kotak dengan Tombol Play -->
+     <div class="flex max-sm:flex-col max-sm:justify-center max-sm:items-center lg:justify-evenly mt-8 max-sm:mt-0">
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 1 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 2 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
+            <!-- Konten Kotak 3 -->
+            <div class="text-center">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+                    <i class="fas fa-play-circle text-4xl text-[6EA066]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="w-52 h-52 bg-gray-200 rounded-lg p-4 flex justify-center items-center max-sm:mb-8 max-sm:flex-col">
             <!-- Konten Kotak 4 -->
             <div class="text-center">
                 <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">

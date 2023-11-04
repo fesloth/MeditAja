@@ -13,7 +13,7 @@ class SessionController extends Controller
     public function login()
     {
         return view('session.login', [
-            "title" => "login"
+            "title" => "Login"
         ]);
     }
 
@@ -41,7 +41,7 @@ class SessionController extends Controller
     public function register()
     {
         return view('session.register', [
-            "title" => "register"
+            "title" => "Register"
         ]);
     }
 

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-<div class="p-4 max-w-md mx-auto mt-28 bg-white">
+<div class="p-4 max-w-md mx-auto max-sm:mx-3 mt-28 bg-white">
     <h1 class="text-xl font-semibold mb-4 text-slate-800">Tambah Catatan Meditasi</h1>
     <form action="{{ route('jurnal.store') }}" method="POST" style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
         @csrf

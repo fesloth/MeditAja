@@ -21,7 +21,7 @@
                         <option value="">Pilih Prioritas</option>
                         <option value="Tinggi" {{ $task->priority === 'Tinggi' ? 'selected' : '' }}>Tinggi</option>
                         <option value="Sedang" {{ $task->priority === 'Sedang' ? 'selected' : '' }}>Sedang</option>
-                        <option value="Rendah" {{ $task->priority === 'Low' ? 'selected' : '' }}>Rendah</option>
+                        <option value="Rendah" {{ $task->priority === 'Rendah' ? 'selected' : '' }}>Rendah</option>
                     </select>
                 </div>
                 <div class="mb-4 flex justify-center items-center">

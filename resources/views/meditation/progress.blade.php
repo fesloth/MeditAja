@@ -2,7 +2,7 @@
  @include('partials.navbar')
  <h1 class="text-4xl m-10 font-semibold text-green-600 mt-36 text-center">Progress <span class="underline">{{ $user->username }}</span></h1>
 <div class="container flex justify-center items-center">
-    <div class="stats shadow text-center bg-white mb-12 p-4 mx-auto border border-gray-300 rounded-md">
+    <div class="stats shadow text-center bg-white mb-12 p-4 mx-auto max-sm:mx-10 border border-gray-300 rounded-md">
         <div class="stat">
             <div class="stat-title text-slate-800">Jumlah Tugas yang belum selesai</div>
             <div class="stat-value text-primary">
@@ -39,7 +39,7 @@
 
   <div class="text-center mb-16 text-slate-950">
     <h2 class="text-4xl m-10 font-semibold text-green-600 text-center">Isi Catatan <span class="underline">{{ $user->username }}</span></h2>
-    <div class="flex flex-wrap justify-center">
+    <div class="flex flex-wrap justify-center mx-52 max-sm:mx-5">
         <div class="w-1/2 md:w-1/4 lg:w-1/5 p-4">
             <div class="bg-blue-500 rounded-full p-4 inline-block">
                 <i class="fas fa-briefcase text-white text-2xl"></i>
@@ -253,18 +253,20 @@
         </div>
 
         <p class="text-xl mt-8">
-          @if ($sadMoods > $happyMoods && $sadMoods > $goodMoods && $sadMoods > $neutralMoods && $sadMoods > $badMoods)
-          <span class="underline">{{ $user->username }}</span>, Sepertinya Anda sering merasa sedih. Apakah semuanya baik-baik saja?
-          @elseif ($goodMoods > $sadMoods && $goodMoods > $happyMoods && $goodMoods > $neutralMoods && $goodMoods > $badMoods)
-              Hai, <span class="underline">{{ $user->username }}</span>! Anda tampaknya dalam suasana hati yang baik sebagian besar waktu. Pertahankan!
-          @elseif ($neutralMoods > $sadMoods && $neutralMoods > $happyMoods && $neutralMoods > $goodMoods && $neutralMoods > $badMoods)
-              {{ $user->username }}, Mood Anda cenderung biasa. Ini adalah bagian normal dari kehidupan.
-          @elseif ($badMoods > $sadMoods && $badMoods > $happyMoods && $badMoods > $goodMoods && $badMoods > $neutralMoods)
-              Tampaknya <span class="underline"><span class="underline">{{ $user->username }}</span></span> mengalami beberapa mood buruk. Apakah ada yang bisa kami lakukan untuk membantu?
-          @else
-              Hai, <span class="underline">{{ $user->username }}</span>! Mood Anda tampaknya bervariasi. Ini adalah bagian normal dari kehidupan.
-          @endif
-      </p>      
+            @if ($happyMoods > $sadMoods && $happyMoods > $goodMoods && $happyMoods > $neutralMoods && $happyMoods > $badMoods)
+                Hai, <span class="underline">{{ $user->username }}</span>! Anda tampaknya selalu dalam suasana hati yang ceria. Teruskan semangat positif Anda!
+            @elseif ($sadMoods > $happyMoods && $sadMoods > $goodMoods && $sadMoods > $neutralMoods && $sadMoods > $badMoods)
+                <span class="underline">{{ $user->username }}</span>, Sepertinya Anda sering merasa sedih. Apakah semuanya baik-baik saja?
+            @elseif ($goodMoods > $sadMoods && $goodMoods > $happyMoods && $goodMoods > $neutralMoods && $goodMoods > $badMoods)
+                Hai, <span class="underline">{{ $user->username }}</span>! Anda tampaknya dalam suasana hati yang baik sebagian besar waktu. Pertahankan!
+            @elseif ($neutralMoods > $sadMoods && $neutralMoods > $happyMoods && $neutralMoods > $goodMoods && $neutralMoods > $badMoods)
+                {{ $user->username }}, Mood Anda cenderung biasa. Ini adalah bagian normal dari kehidupan.
+            @elseif ($badMoods > $sadMoods && $badMoods > $happyMoods && $badMoods > $goodMoods && $badMoods > $neutralMoods)
+                Tampaknya <span class="underline">{{ $user->username }}</span> mengalami beberapa mood buruk. Apakah ada yang bisa kami lakukan untuk membantu?
+            @else
+                Hai, <span class="underline">{{ $user->username }}</span>! Mood Anda tampaknya bervariasi. Ini adalah bagian normal dari kehidupan.
+            @endif
+        </p>        
     @else
         <p class="text-xl">Tidak ada data mood yang tersedia.</p>
     @endif

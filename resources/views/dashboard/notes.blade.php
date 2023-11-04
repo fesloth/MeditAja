@@ -35,7 +35,7 @@
   </form>
 </div>
 </div>
-<div class="mt-8 mx-52">
+<div class="mt-8 mx-52 max-sm:mx-8">
     <a href="{{ route('create.note') }}" class="bg-[91D086] text-white px-4 py-2 rounded-lg hover:bg-[A4EA98]">Tambah Catatan</a>
   </div>
   
@@ -43,7 +43,7 @@
 
 
 <!-- Tampilkan catatan -->
-<div class="mt-8 mx-52 mb-20">
+<div class="mt-8 mx-52 mb-20 max-sm:mx-2">
   <ul>
     @foreach($notes as $note)
     <li class="py-2 border-b">

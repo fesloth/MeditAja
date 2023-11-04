@@ -2,8 +2,8 @@
 
 @include('partials.navbar')
 
-<div class="min-h-screen flex items-center justify-center">
-    <div class="container max-w-md p-6 bg-white rounded-lg shadow-lg mr-4">
+<div class="min-h-screen flex items-center justify-center max-sm:flex-col">
+    <div class="container max-sm:mt-24 max-sm:mr-0 max-sm:w-80 max-w-md p-6 bg-white rounded-lg shadow-lg mr-4">
       <h2 class="text-2xl font-bold mb-4 text-slate-800">Kalkulator Relaksasi</h2>
       <form
         id="relaxation-calculator"
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="container max-w-md p-6 bg-white rounded-lg shadow-lg ml-4">
+    <div class="container max-w-md max-sm:w-80 max-sm:mt-8 max-sm:mb-10 p-6 bg-white rounded-lg shadow-lg max-sm:ml-0 ml-4">
         <h2 class="text-2xl font-bold mb-4 text-slate-800">Penghitung Napas</h2>
         <p class="text-black">Total Napas: <span id="breathCount" class="text-green-500 font-semibold">0</span></p>
         <button

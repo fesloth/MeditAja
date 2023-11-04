@@ -24,7 +24,7 @@
           <a href="/" class="btn btn-ghost rounded-btn">Beranda</a>
           <div class="dropdown dropdown-end">
             <!-- Dropdown "Produktivitas" -->
-            <label tabindex="0" class="btn btn-ghost">
+            <label tabindex="0" class="btn btn-ghost max-sm:hidden">
               <div class="rounded-btn">
                 <!-- Icon untuk dropdown "Produktivitas" -->
                 Produktivitas <i class="fa-solid fa-chevron-down"></i>
@@ -70,9 +70,9 @@
   </div>
   
 
-  <div class="cards-container flex mt-36 mx-32 my-36">
+  <div class="cards-container flex mt-36 mx-32 my-36 max-sm:mx-0 max-sm:flex-col max-sm:justify-center max-sm:items-center">
     @foreach($paketPremiums as $paketPremium)
-    <div class="card w-96 bg-[91D086] text-slate-900 mx-4 shadow-xl">
+    <div class="card w-96 bg-[91D086] text-slate-900 mx-4 max-sm:mx-0 max-sm:mb-8 max-sm:w-80 shadow-xl">
         <div class="card-body items-center text-center m-10">
             <h2 class="card-title">{{ $paketPremium->nama_paket }}</h2>
             <p>Rp. {{ number_format($paketPremium->harga) }}.-</p>
@@ -84,6 +84,5 @@
         </div>
     </div>
     @endforeach
-</div>
 </div>
 @include('partials.footer')

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 <div class="flex justify-center items-center h-screen">
-    <div class="max-w-lg w-96 bg-[91D086] border border-slate-200 rounded-xl font-rubik p-5 shadow-md">
+    <div class="w-96 max-sm:w-80 bg-[91D086] border border-slate-200 rounded-xl font-rubik p-5 shadow-md">
         <form action="" method="post">
             @csrf
             <div class="p-5">

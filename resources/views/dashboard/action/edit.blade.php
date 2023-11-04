@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 <div class="flex justify-center items-center h-screen">
-    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 bg-white rounded-lg shadow-md mx-auto">
+    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 bg-white rounded-lg shadow-md max-sm:mx-5 mx-auto">
     <h2 class="text-lg text-black font-semibold">Edit Catatan</h2>
     <form action="{{ route('update.note', ['id' => $note->id]) }}" method="POST">
         @csrf
