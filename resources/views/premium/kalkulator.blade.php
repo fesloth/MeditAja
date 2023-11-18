@@ -35,7 +35,7 @@
 
         <button
           type="submit"
-          class="w-full mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+          class="w-full mt-4 px-4 py-2 bg-[91D086] text-white rounded-lg hover:bg-green-600 transition duration-300"
         >
           Mulai
         </button>
@@ -55,7 +55,7 @@
         <p class="text-black">Total Napas: <span id="breathCount" class="text-green-500 font-semibold">0</span></p>
         <button
           onclick="countBreaths()"
-          class="w-full mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+          class="w-full mt-4 px-4 py-2 bg-[91D086] text-white rounded-lg hover:bg-green-600 transition duration-300"
         >
           Mulai Hitung Napas
         </button>

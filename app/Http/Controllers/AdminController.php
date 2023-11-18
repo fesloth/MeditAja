@@ -86,15 +86,13 @@ class AdminController extends Controller
 
     public function makeUserPremium($id)
     {
-        // Find the user by their ID
+
         $user = User::find($id);
 
         if (!$user) {
-            // Handle the case where the user is not found
             return redirect()->route('admin')->with('error', 'User not found.');
         }
 
-        // Set the user as a premium user
         $user->is_premium = true;
         $user->premium_start_date = now(); // Menyimpan tanggal saat pengguna menjadi premium
         $user->save();
@@ -104,17 +102,14 @@ class AdminController extends Controller
 
     public function cancelPremium($id)
     {
-        // Retrieve the user by ID
+
         $user = User::find($id);
 
         if (!$user) {
-            // Handle the case where the user is not found
             return redirect()->back()->with('error', 'User not found.');
         }
 
-        // Check if the user is already a premium user
         if ($user->is_premium) {
-            // Cancel premium status (you can implement your logic here)
             $user->is_premium = false;
             $user->save();
 

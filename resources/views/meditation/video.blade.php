@@ -17,7 +17,7 @@
 
 <div class="navbar bg-[91D086] text-slate-900 shadow-xl">
     <div class="flex-1 pl-5">
-      <a href="#" class="btn btn-ghost normal-case text-xl">Meditation <i class="fa-solid fa-laptop-medical"></i></a>
+      <a href="#" class="btn btn-ghost normal-case text-xl">Vide Meditasi <i class="fa-solid fa-laptop-medical"></i></a>
     </div>
     <div class="flex-none">
       <div class="pr-5">

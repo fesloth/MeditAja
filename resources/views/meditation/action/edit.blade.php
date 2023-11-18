@@ -34,7 +34,7 @@
             window.location.href = '/todo';
         </script>
         @endif
-            <a href="/todo" id="button" class="text-[6EA066]"><i class="fas fa-arrow-left mr-2"></i>Back</a>
+            <a href="/todo" id="button" class="text-[6EA066]"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
         </div>
     </div>
 </div>

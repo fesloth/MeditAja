@@ -18,7 +18,7 @@
               Produktivitas <i class="fa-solid fa-chevron-down"></i>
             </div>      
           </label>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[91D086] rounded-box w-52">
             <!-- Tautan untuk fitur-fitur -->
             <li>
               <a href="/video" class="justify-between">
@@ -64,7 +64,7 @@
         @endif
       </div>      
     </label>
-    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
+    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[91D086] rounded-box w-52">
       <li>
         <a href="/profile" class="justify-between">
           Pengaturan Profil
@@ -103,7 +103,7 @@
             @endif
           </div>
         </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-300 rounded-box w-52">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[91D086] rounded-box w-52">
           <li>
             <a href="/profile" class="justify-between">
               Pengaturan Profil
