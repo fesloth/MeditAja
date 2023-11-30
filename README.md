@@ -23,7 +23,7 @@ Berikut adalah langkah-langkah untuk mengkloning dan menjalankan proyek ini di l
 1. Buka terminal/git bash Anda.
 2. Clone repositori ini ke direktori lokal Anda:
  ```bash
-   git clone https://github.com/fesloth/pam.git
+   git clone https://github.com/fesloth/pam.git](https://github.com/fesloth/MeditAja.git
 ```
 3. Pindah ke direktori proyek:
 ```bash
