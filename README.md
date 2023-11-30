@@ -46,6 +46,10 @@ Berikut adalah langkah-langkah untuk mengkloning dan menjalankan proyek ini di l
    php artisan serve
 ```
 8. Buka browser dan akses proyek Anda melalui http://localhost:8000.
+9. Jalankan Tailwind:
+```bash
+    npm run dev
+```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
